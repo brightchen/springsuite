@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>my.bc</groupId>
+  <artifactId>springsuite</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <modules>
+    <module>persistent</module>
+  </modules>
+  
+  <dependencyManagement>
+    <dependencies>
+    
+    </dependencies>
+  </dependencyManagement>
+  
+  
+  <build>
+
+    <defaultGoal>install</defaultGoal>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>appassembler-maven-plugin</artifactId>
+          <version>${appassembler-maven-plugin.version}</version>
+          <configuration>
+            <repositoryLayout>flat</repositoryLayout>
+            <generateRepository>false</generateRepository>
+            <environmentSetupFileName>fortidb-env</environmentSetupFileName>
+            <includeConfigurationDirectoryInClasspath>false</includeConfigurationDirectoryInClasspath>
+          </configuration>
+        </plugin>
+        
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <!-- starting with surefire 2.4, any jpa/embedded derby require this settings -->
+            <useSystemClassLoader>${surefire.useSystemClassLoader}</useSystemClassLoader>
+
+            <systemPropertyVariables>
+              <fdb.db.dialect>${fdb.db.dialect}</fdb.db.dialect>
+              <fdb.db.host>${fdb.db.host}</fdb.db.host>
+              <fdb.db.port>${fdb.db.port}</fdb.db.port>
+              <fdb.db.name>${fdb.db.name}</fdb.db.name>
+              <jdbc.driverClassName>${jdbc.driverClassName}</jdbc.driverClassName>
+              <jdbc.url>${jdbc.url}</jdbc.url>
+              <jdbc.username>${jdbc.username}</jdbc.username>
+              <jdbc.password>${jdbc.password}</jdbc.password>
+              <hibernate.show_sql>${hibernate.show_sql}</hibernate.show_sql>
+              <hibernate.hbm2ddl.auto>${hibernate.hbm2ddl.auto}</hibernate.hbm2ddl.auto>
+              <hibernate.dialect>${hibernate.dialect}</hibernate.dialect>
+              <fdb.target.runtime>${fdb.target.runtime}</fdb.target.runtime>
+              <fdb.it.max.test.vascan>${fdb.it.max.test.vascan}</fdb.it.max.test.vascan>
+              <fdb.simulator.delay>${fdb.simulator.delay}</fdb.simulator.delay>
+              <derby.system.home>${basedir}/target</derby.system.home>
+              <liveTargetFactory.runtime>${liveTargetFactory.runtime}</liveTargetFactory.runtime>
+              <fdb.broker.port>${fdb.broker.port}</fdb.broker.port>
+              <fdb.broker.protocol>${fdb.broker.protocol}</fdb.broker.protocol>
+            </systemPropertyVariables>
+
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+
+      </plugins>
+
+    </pluginManagement>
+  </build>
+
+  <properties>
+    <appassembler-maven-plugin.version>1.0</appassembler-maven-plugin.version>
+    
+    <!--hibernate -->
+    <hibernate.entitymanager.version>3.4.0.GA</hibernate.entitymanager.version>
+    <hibernate.annotations.version>3.4.0.GA</hibernate.annotations.version>
+    <hibernate.commons-annotations.version>3.1.0.GA</hibernate.commons-annotations.version>
+    <hibernate.core.version>3.3.2.GA</hibernate.core.version>
+
+    <org.springframework.version>3.0.7.RELEASE</org.springframework.version>
+  </properties>  
+</project>
