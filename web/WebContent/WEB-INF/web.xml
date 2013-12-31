@@ -8,7 +8,7 @@
   <description>A generic web project using Spring</description>
 
 
-  <!-- Log4j begin -->
+  <!--====== Log4j begin ======-->
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
@@ -24,7 +24,7 @@
     <param-name>log4jRefreshInterval</param-name>
     <param-value>30000</param-value>
   </context-param>
-  <!-- Log4j end -->
+  <!--====== Log4j end ======-->
 
   
   <!-- Spring bean begin -->
@@ -38,9 +38,17 @@
       /WEB-INF/beans.xml
     </param-value>
   </context-param>
+  <!--====== Spring bean end ======-->
   
-  <!-- Spring bean end -->
-  
+  <!--====== Spring security begin ======-->
+  <filter>
+    <!-- should NOT change this name -->
+    <filter-name>springSecurityFilterChain</filter-name>
+      <filter-class>
+        org.springframework.web.filter.DelegatingFilterProxy
+      </filter-class>
+    </filter>
+  <!--====== Spring security end ======-->
   
   <!-- Spring MVC begin -->
   <servlet>
@@ -53,7 +61,7 @@
 
   <servlet-mapping>
     <servlet-name>spring-mvc-dispatcher</servlet-name>
-    <!-- default servlet, other format such as /*, *.html, /app etc-->
+    <!-- default servlet, different from /*, other format such as /*, *.html, /app etc-->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
    
