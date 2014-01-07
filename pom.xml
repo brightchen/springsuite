@@ -16,10 +16,36 @@
   <modules>
     <module>persistent</module>
     <module>security</module>
+    <module>model</module>
+    <module>user</module>
   </modules>
 
   <dependencyManagement>
     <dependencies>
+      <!-- ================ sub projects begin ================ -->
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>persistent</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>security</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>model</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>user</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+
+      <!-- ================ sub projects end ================ -->
+    
       <!-- ================ All JDBC Drivers begin ================ -->
       <dependency>
         <groupId>mysql</groupId>
@@ -489,8 +515,9 @@
   <properties>
     <appassembler-maven-plugin.version>1.0</appassembler-maven-plugin.version>
 
-    <!--hibernate -->
+    <application.version>0.0.1-SNAPSHOT</application.version>
 
+    <!--hibernate -->
     <org.springframework.version>3.0.7.RELEASE</org.springframework.version>
     <org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
     
