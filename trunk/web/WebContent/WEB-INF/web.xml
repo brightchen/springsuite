@@ -27,28 +27,62 @@
   <!--====== Log4j end ======-->
 
   
-  <!-- Spring bean begin -->
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  
+  <!-- Spring beans begin -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
       /WEB-INF/beans.xml
+      classpath:/spring-security-configure.xml
+      classpath:/applicationContext*.xml
     </param-value>
   </context-param>
-  <!--====== Spring bean end ======-->
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!--====== Spring beans end ======-->
   
   <!--====== Spring security begin ======-->
+  <listener>
+    <!-- 负责加载会话监听器事件 -->
+    <listener-class>
+      org.springframework.security.web.session.HttpSessionEventPublisher
+    </listener-class>
+  </listener>
   <filter>
     <!-- should NOT change this name -->
     <filter-name>springSecurityFilterChain</filter-name>
-      <filter-class>
-        org.springframework.web.filter.DelegatingFilterProxy
-      </filter-class>
-    </filter>
+    <filter-class>
+      org.springframework.web.filter.DelegatingFilterProxy
+    </filter-class>
+    <init-param>
+      <param-name>target-class</param-name>
+      <param-value>org.springframework.security.web.FilterChainProxy</param-value>
+    </init-param>
+  </filter>
+    
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <!--====== Spring security end ======-->
+  
+  
+  <!--====== Spring character encoding begin ======-->
+  <filter>
+    <filter-name>setCharacterEncoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>setCharacterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!--====== Spring character encoding end ======-->
   
   <!-- Spring MVC begin -->
   <servlet>

@@ -9,32 +9,23 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>persistent</artifactId>
-  <name>persistent</name>
-  <description>the persistent module</description>
+  <artifactId>web</artifactId>
+  <name>web</name>
+  <description>the web module</description>
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
+      <groupId>my.bc</groupId>
+      <artifactId>persistent</artifactId>
     </dependency>
+    <dependency>
+      <groupId>my.bc</groupId>
+      <artifactId>security</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>persistence-api</artifactId>
+      <artifactId>spring-web</artifactId>
     </dependency>
 
   </dependencies>

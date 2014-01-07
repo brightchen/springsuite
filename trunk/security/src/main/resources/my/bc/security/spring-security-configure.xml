@@ -1,0 +1,72 @@
+<!-- need namespace <beans xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:security="http://www.springframework.org/schema/security" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+  http://www.springframework.org/schema/security 
+  http://www.springframework.org/schema/security/spring-security-3.0.xsd"> 
+</beans> -->
+
+<!-- defined security as the primary namespace -->
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans" 
+  xmlns="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/security
+  http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+  <global-method-security pre-post-annotations="enabled" />
+  
+  <!-- don't filter static resources -->
+  <http pattern="/**/*.jpg" security="none"/>
+  <http pattern="/**/*.png" security="none"/>
+  <http pattern="/**/*.gif" security="none"/>
+  <http pattern="/**/*.css" security="none"/>
+  <http pattern="/**/*.js" security="none"/>
+ 
+  <!-- <http> sets up a FilterChainProxy -->
+  <!-- Auto-configuration setup a free login page, support for HTTP Basic authentication and logging out -->
+  <http use-expressions="true" auto-config="true">
+    <!-- override the default login form, /static means don't handle it by spring mvc DispatcherServlet
+    <form-login login-processing-url="/static/j_spring_security_check"
+      login-page="/login"
+      authentication-failure-url="/login?login_error=t"/>
+    -->
+    <remember-me />  
+    <session-management invalid-session-url="/timeout.jsp">  
+      <concurrency-control max-sessions="10" error-if-maximum-exceeded="true" />  
+    </session-management>  
+    
+    <!-- FILTER_SECURITY_INTERCEPTOR is the spring security default filter, we should put our filter before it -->
+    <custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR"/>  
+    <!-- <intercept-url pattern="/**" access="ROLE_SPITTER" />  -->
+  </http>
+
+  <!-- configure filter -->
+  <beans:bean id="myFilter" class="my.bc.security.SecurityFilter">
+    <!-- user privileges manager -->
+    <beans:property name="authenticationManager" ref="myAuthenticationManager" />
+    
+    <!-- resource access manager -->
+    <beans:property name="accessDecisionManager" ref="myAccessDecisionManager" />
+    <!-- 资源与权限对应关系 -->
+    <beans:property name="securityMetadataSource" ref="mySecurityMetadataSource" />
+  </beans:bean>
+  
+  <!-- authentication manager, implemented UserDetailsService -->
+  <authentication-manager alias="myAuthenticationManager">
+    <authentication-provider user-service-ref="myUserDetailServiceImpl" />
+  </authentication-manager>
+  
+  <beans:bean id="myAccessDecisionManager" class="com.huaxin.security.MyAccessDecisionManager">
+  </beans:bean>
+  
+  <beans:bean id="mySecurityMetadataSource" class="my.bc.SecurityMetadataSource">
+    <beans:constructor-arg  name="resourcesDao"  ref="resourcesDao"></beans:constructor-arg>
+  </beans:bean>
+  
+  <beans:bean id="myUserDetailServiceImpl" class="my.bc.UserDetailServiceImpl">
+    <beans:property name="usersDao" ref="usersDao"></beans:property>
+  </beans:bean>  
+</beans:beans>
