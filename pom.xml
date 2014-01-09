@@ -18,6 +18,7 @@
     <module>security</module>
     <module>model</module>
     <module>user</module>
+    <module>web</module>
   </modules>
 
   <dependencyManagement>
@@ -323,6 +324,19 @@
         <version>${org.springframework.security.version}</version>
       </dependency>
       <!--============================= Spring security end ============================= -->
+
+      <!--============================= jackson begin ============================= -->
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>${org.codehaus.jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>${org.codehaus.jackson.version}</version>
+      </dependency>
+      <!--============================= jackson end ============================= -->
 
       <!--===========================Common ASM shared with Hibernate,Spring,jruby begin =========================== -->
       <dependency>
