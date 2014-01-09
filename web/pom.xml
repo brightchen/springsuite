@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <!-- the parent artifact should be packaging -->
@@ -12,21 +13,89 @@
   <artifactId>web</artifactId>
   <name>web</name>
   <description>the web module</description>
+  
+  <packaging>war</packaging>
 
   <dependencies>
+    <!--================= depended projects begin =================-->
+    <dependency>
+      <groupId>my.bc</groupId>
+      <artifactId>model</artifactId>
+    </dependency>
     <dependency>
       <groupId>my.bc</groupId>
       <artifactId>persistent</artifactId>
     </dependency>
     <dependency>
       <groupId>my.bc</groupId>
+      <artifactId>user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>my.bc</groupId>
       <artifactId>security</artifactId>
     </dependency>
-    
+    <!--================= depended projects end =================-->
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+    </dependency>
+  
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+    </dependency>
 
   </dependencies>
+
+  <build>
+    <finalName>web</finalName>
+
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
+    
+    <plugins>
+
+      <!-- define web context name -->
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <wtpContextName>web</wtpContextName>
+        </configuration>
+      </plugin>
+
+      <!-- define the war source directory -->
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>WebContent</warSourceDirectory>
+          <archiveClasses>true</archiveClasses>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+  
 </project>

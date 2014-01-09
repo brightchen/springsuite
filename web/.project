@@ -1,7 +1,12 @@
 <projectDescription>
   <name>web</name>
   <comment>the web module</comment>
-  <projects/>
+  <projects>
+    <project>model</project>
+    <project>persistent</project>
+    <project>security</project>
+    <project>user</project>
+  </projects>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>
