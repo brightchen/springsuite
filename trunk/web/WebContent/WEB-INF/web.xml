@@ -32,7 +32,8 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
       /WEB-INF/beans.xml
-      classpath:my/bc/security/spring-security-configure.xml
+      classpath:my/bc/security/simple-spring-security-configure.xml
+      <!-- classpath:my/bc/security/spring-security-configure.xml -->
       <!-- classpath*:**/applicationContext-*.xml -->
     </param-value>
   </context-param>
@@ -50,9 +51,10 @@
     </listener-class>
   </listener>
   <filter>
-    <!-- should NOT change this name -->
     <filter-name>springSecurityFilterChain</filter-name>
     <filter-class>
+      <!-- DelegatingFilterProxy delegate to the bean which implemented Filter interface
+      and have same name as this filter -->
       org.springframework.web.filter.DelegatingFilterProxy
     </filter-class>
     <init-param>
