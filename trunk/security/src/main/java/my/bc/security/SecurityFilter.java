@@ -9,14 +9,22 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import my.bc.persistent.jpa.FlexibleDaoJpa;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
 import org.springframework.security.access.intercept.InterceptorStatusToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 
 public class SecurityFilter extends AbstractSecurityInterceptor implements Filter
 {
+  protected final Log log = LogFactory.getLog(SecurityFilter.class);
+  
   // 与applicationContext-security.xml里的myFilter的属性securityMetadataSource对应，
   // 其他的两个组件，已经在AbstractSecurityInterceptor定义
   private FilterInvocationSecurityMetadataSource securityMetadataSource;
@@ -31,6 +39,18 @@ public class SecurityFilter extends AbstractSecurityInterceptor implements Filte
   {
     FilterInvocation fi = new FilterInvocation(request, response, chain);
     invoke(fi);
+    
+    //A user is authenticated when the SecurityContextHolder contains a fully populated Authentication object.
+    //check whether user authenticated or not.
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    if( auth != null )
+    {
+      log.info( "user " + auth.getPrincipal() + " has been authenticated" );
+    }
+    else
+    {
+      log.warn( "Has NOT been authenticated" );
+    }
   }
 
   private void invoke(FilterInvocation fi) throws IOException, ServletException

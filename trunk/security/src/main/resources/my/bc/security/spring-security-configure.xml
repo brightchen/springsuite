@@ -11,22 +11,14 @@
   <global-method-security pre-post-annotations="enabled" />
 
   <!-- don't filter static resources -->
-  <http
-    pattern="/**/*.jpg"
-    security="none" />
-  <http
-    pattern="/**/*.png"
-    security="none" />
-  <http
-    pattern="/**/*.gif"
-    security="none" />
-  <http
-    pattern="/**/*.css"
-    security="none" />
-  <http
-    pattern="/**/*.js"
-    security="none" />
+  <http    pattern="/**/*.jpg"    security="none" />
+  <http    pattern="/**/*.png"    security="none" />
+  <http    pattern="/**/*.gif"    security="none" />
+  <http    pattern="/**/*.css"    security="none" />
+  <http    pattern="/**/*.js"     security="none" />
 
+
+  
   <!-- enable security annotation <global-method-security pre-post-annotations="enabled" access-decision-manager-ref="myAccessDecisionManager"/> -->
 
   <!-- <http> sets up a FilterChainProxy -->
@@ -38,15 +30,15 @@
       login-page="/login" authentication-failure-url="/login?login_error=t"/> -->
 
     <!-- anyone can access to login page -->
-    <intercept-url
-      pattern="/login.jsp"
-      access="IS_AUTHENTICATED_ANONYMOUSLY" />
+    <intercept-url pattern="/login.jsp"      access="IS_AUTHENTICATED_ANONYMOUSLY" />
     <intercept-url pattern="/forgotpassword.jsp" />
 
+    <intercept-url pattern="/views/*.jsp"      access="ROLE_USER" />
+  
     <form-login
       login-page="/login.jsp"
       authentication-failure-url="/login.jsp?error=true"
-      default-target-url="/index.jsp"
+      default-target-url="/home.jsp"
       always-use-default-target='true' />
 
     <!-- <form-login login-page="/login.jsp" authentication-failure-url="/common/403.jsp" default-target-url="/admin.jsp" 
@@ -92,7 +84,7 @@
 
   <!-- authentication manager, implemented UserDetailsService -->
   <authentication-manager alias="myAuthenticationManager">
-    <authentication-provider user-service-ref="myUserDetailServiceImpl" />
+    <authentication-provider user-service-ref="myUserDetailService" />
   </authentication-manager>
 
   <beans:bean
@@ -106,7 +98,7 @@
   </beans:bean>
 
   <beans:bean
-    id="myUserDetailServiceImpl"
+    id="myUserDetailService"
     class="my.bc.user.UserDetailServiceImpl">
   </beans:bean>
 
