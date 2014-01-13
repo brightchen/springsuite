@@ -1,9 +1,13 @@
 package my.bc.user;
 
+import java.util.Collections;
+import java.util.Set;
+
 import my.bc.user.model.User;
 import my.bc.user.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,6 +32,11 @@ public class UserDetailServiceImpl implements UserDetailsService
     return user;
   }
 
+  private Set<GrantedAuthority> obtionGrantedAuthorities(User user) 
+  {
+    return Collections.emptySet();
+  }
+  
   // 取得用户的权限
 //  private Set<GrantedAuthority> obtionGrantedAuthorities(User user) {  
 //    Set<GrantedAuthority> authSet = new HashSet<GrantedAuthority>();  

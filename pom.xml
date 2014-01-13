@@ -19,6 +19,7 @@
     <module>model</module>
     <module>user</module>
     <module>web</module>
+    <module>studio</module>
   </modules>
 
   <dependencyManagement>
@@ -406,6 +407,12 @@
         <groupId>velocity</groupId>
         <artifactId>velocity</artifactId>
         <version>${velocity.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>${javax.servlet.jstl.version}</version>
       </dependency>
 
 
