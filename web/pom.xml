@@ -34,6 +34,10 @@
       <groupId>my.bc</groupId>
       <artifactId>security</artifactId>
     </dependency>
+    <dependency>
+      <groupId>my.bc</groupId>
+      <artifactId>configure</artifactId>
+    </dependency>
     <!--================= depended projects end =================-->
 
     <dependency>
