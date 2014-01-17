@@ -2,6 +2,8 @@
   <name>web</name>
   <comment>the web module</comment>
   <projects>
+    <project>common</project>
+    <project>configure</project>
     <project>model</project>
     <project>persistent</project>
     <project>security</project>
