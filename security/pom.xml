@@ -9,6 +9,7 @@
   </parent>
 
   <artifactId>security</artifactId>
+  <name>security</name>
 
   <dependencies>
     <dependency>
