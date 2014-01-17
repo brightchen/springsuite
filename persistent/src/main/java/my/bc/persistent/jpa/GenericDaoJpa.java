@@ -28,13 +28,13 @@ public class GenericDaoJpa<T extends BaseEntity> implements GenericDao<T>
 
   public GenericDaoJpa(Class<T> persistentClass)
   {
-    persistentClass = persistentClass;
+    this.persistentClass = persistentClass;
   }
 
   @PersistenceContext()
   public void setEntityManager(EntityManager entityManager)
   {
-    entityManager = entityManager;
+    this.entityManager = entityManager;
     entityManager.setFlushMode(FlushModeType.COMMIT);
 
   }
