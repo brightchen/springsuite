@@ -10,6 +10,7 @@
 
   <groupId>my.bc</groupId>
   <artifactId>springsuite</artifactId>
+  <name>springsuite</name>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -19,7 +20,8 @@
     <module>model</module>
     <module>user</module>
     <module>web</module>
-    <module>studio</module>
+    <module>configure</module>
+    <module>common</module>
   </modules>
 
   <dependencyManagement>
@@ -43,6 +45,21 @@
       <dependency>
         <groupId>my.bc</groupId>
         <artifactId>user</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>web</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>configure</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>common</artifactId>
         <version>${application.version}</version>
       </dependency>
 
@@ -424,6 +441,12 @@
 
 
       <dependency>
+        <groupId>javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>${javassist.javassist.version}</version>
+      </dependency>
+
+      <dependency>
         <groupId>jboss</groupId>
         <artifactId>javassist</artifactId>
         <version>${jboss.javassist.version}</version>
@@ -463,6 +486,17 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>${slf4j-api.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.reflections</groupId>
+        <artifactId>reflections</artifactId>
+        <version>${org.reflections.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${com.google.guava.version}</version>
       </dependency>
 
       <!-- ============================== All Others end ============================== -->
@@ -649,6 +683,7 @@
     <velocity.version>1.5</velocity.version>
     <opensymphony.quartz.version>1.6.0</opensymphony.quartz.version>
     <jboss.javassist.version>3.7.ga</jboss.javassist.version>
+    <javassist.javassist.version>3.12.1.GA</javassist.javassist.version>
     <ehcache.version>1.4.1</ehcache.version>
     <zql.version>1.0</zql.version>
 
@@ -667,6 +702,8 @@
     <slf4j-api.version>1.5.4</slf4j-api.version>
 
     <junit.version>3.8.1</junit.version>
+    <org.reflections.version>0.9.9-RC1</org.reflections.version>
+    <com.google.guava.version>12.0</com.google.guava.version>
     <!-- settings -->
 
     <surefire.useSystemClassLoader>true</surefire.useSystemClassLoader>
