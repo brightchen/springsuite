@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   version="1.0">
+
+   <persistence-unit name="resourceLocal" transaction-type="RESOURCE_LOCAL">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <!-- property name="hibernate.hbm2ddl.auto" value="update"/-->
+        <!-- property name="hibernate.show_sql" value="true" /-->
+      </properties>
+   </persistence-unit>
+   
+   
+   <!-- extra persistence units are for database specific schema generation only-->
+   <persistence-unit name="hsqldb">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>     
+      </properties>
+   </persistence-unit>   
+   
+   <persistence-unit name="derby">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>          
+      </properties>
+   </persistence-unit>   
+
+   <persistence-unit name="postgresql">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>          
+      </properties>
+   </persistence-unit>   
+
+   <persistence-unit name="oracle">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>          
+      </properties>
+   </persistence-unit>   
+
+   <persistence-unit name="db2">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        <property name="hibernate.dialect" value="org.hibernate.dialect.DB2Dialect"/>          
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="sybase">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        <property name="hibernate.dialect" value="org.hibernate.dialect.SybaseDialect "/>          
+      </properties>
+   </persistence-unit>
+   
+   <persistence-unit name="sqlserver">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <properties>
+        <property name="hibernate.archive.autodetection" value="class"/>
+        <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect "/>          
+      </properties>
+   </persistence-unit>
+
+</persistence>
