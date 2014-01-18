@@ -7,16 +7,33 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import javax.annotation.Resource;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DefaultPropertiesManager implements PropertiesManager
 {
-  @Resource( name="chainedConfigurationProperties" )
-  private ConfigurationProperties configurationProperties;
+  private static final Log log = LogFactory.getLog( DefaultPropertiesManager.class );
   
+  public static final DefaultPropertiesManager instance = new DefaultPropertiesManager();
+  protected DefaultPropertiesManager(){}
+  
+  // this class maybe run at different environment, say, web application or stand-alone application
+  // so, it can't tell it's context path, let the caller set this parameter;
+  private String contextPath;
+  private ConfigurationProperties configurationProperties = ChainedConfigurationProperties.instance;
+  
+  
+  public String getContextPath()
+  {
+    return contextPath;
+  }
+  public void setContextPath(String contextPath)
+  {
+    this.contextPath = contextPath;
+  }
+
   @Override
   public void populateProperties()
   {
@@ -51,11 +68,12 @@ public class DefaultPropertiesManager implements PropertiesManager
     }
     catch( FileNotFoundException fnfe )
     {
-      
+      log.warn( "FileNotFoundException: " + fnfe.getMessage() );
+      log.warn( "Can NOT find file: " + propertyFile.getAbsolutePath() );
     }
     catch( IOException ioe )
     {
-      
+      log.warn( "IOException: " + ioe.getMessage() );
     }
 
   }

@@ -2,19 +2,14 @@ package my.bc.configure;
 
 import java.io.File;
 
-import org.springframework.stereotype.Component;
-
 /**
  * load configuration properties from manually configuration
  * 
  * @author Bright Chen
  *
  */
-@Component( "configurationProperties" )
 public class ConfigurableConfigurationProperties implements ConfigurationProperties
 {
-  public static final ConfigurationProperties DEF_INST = new ConfigurableConfigurationProperties();
-  
   /**
    * get all configure property files.
    * it should not include the i18n property files

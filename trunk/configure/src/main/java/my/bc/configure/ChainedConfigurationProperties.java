@@ -2,8 +2,6 @@ package my.bc.configure;
 
 import java.io.File;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,25 +11,24 @@ import org.springframework.stereotype.Component;
  *
  */
 
-
-@Component
-public class ChainedConfigurationProperties implements ConfigurationProperties
+public class ChainedConfigurationProperties extends ContextDepended implements ConfigurationProperties
 {
-  private ChainedConfigurationProperties(){}
+  public static final ChainedConfigurationProperties instance = new ChainedConfigurationProperties();
+  
+  protected ChainedConfigurationProperties(){}
   
   /**
    * how to bind configurations with ConfigurableConfigurationProperties and DefaultConfigurationProperties via annotation
-   * I can only name these two component with same name
+   * I can only name these two component with same name, but in fact it throws exception 
+   * Annotation-specified bean name 'configurationProperties' for bean class [my.bc.configure.DefaultConfigurationProperties] conflicts with existing,
    */
-  @Autowired
-  @Qualifier( "configurationProperties" )
-  private ConfigurationProperties configurations[]; 
-//  new ConfigurationProperties[]{ @Resource configurableConfigurationProperties, new ConfigurableConfigurationProperties(), 
-//                                                                                    new DefaultConfigurationProperties() };
+  protected ConfigurationProperties configurations[] = new ConfigurationProperties[]{ new ConfigurableConfigurationProperties(), 
+                                                                                      new DefaultConfigurationProperties() };
+  
   @Override
   public File[] getPropertyFiles()
   {
-    for( ConfigurationProperties configuration : configurations )
+    for( ConfigurationProperties configuration : getDelegatedToConfigurationProperties() )
     {
       File[] propertyFiles = configuration.getPropertyFiles();
       if( propertyFiles != null && propertyFiles.length > 0 )
@@ -39,11 +36,16 @@ public class ChainedConfigurationProperties implements ConfigurationProperties
     }
     return null;
   }
+  
+  protected ConfigurationProperties[] getDelegatedToConfigurationProperties()
+  {
+    return configurations;
+  }
 
   @Override
   public File getHomeDir()
   {
-    for( ConfigurationProperties configuration : configurations )
+    for( ConfigurationProperties configuration : getDelegatedToConfigurationProperties() )
     {
       File homeDir = configuration.getHomeDir();
       if( homeDir != null  )
@@ -55,7 +57,7 @@ public class ChainedConfigurationProperties implements ConfigurationProperties
   @Override
   public File getConfDir()
   {
-    for( ConfigurationProperties configuration : configurations )
+    for( ConfigurationProperties configuration : getDelegatedToConfigurationProperties() )
     {
       File confDir = configuration.getConfDir();
       if( confDir != null  )
