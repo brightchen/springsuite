@@ -7,9 +7,10 @@ import java.util.regex.Pattern;
 
 import my.bc.common.util.CollectionUtil;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.reflections.Reflections;
 import org.reflections.scanners.ResourcesScanner;
-import org.springframework.stereotype.Component;
 
 /**
  * load configuration properties by default.
@@ -18,9 +19,10 @@ import org.springframework.stereotype.Component;
  * @author Bright Chen
  *
  */
-@Component( "configurationProperties" )
 public class DefaultConfigurationProperties implements ConfigurationProperties
 {
+  private static final Log log = LogFactory.getLog( DefaultConfigurationProperties.class );
+  
   @Override
   public File[] getPropertyFiles()
   {
@@ -43,10 +45,28 @@ public class DefaultConfigurationProperties implements ConfigurationProperties
     Set<File> files = new HashSet<File>();
     for( String fileName : fileNames )
     {
-      files.add( new File( fileName ) );
+      File file = createFile( fileName );
+      if( file != null )
+        files.add( file );
     }
     
     return CollectionUtil.copyToArray( new File[ files.size() ], files );
+  }
+  
+  protected File createFile( String fileName )
+  {
+    File file = new File( fileName );
+    if( !file.exists() )
+    {
+      log.warn( "File does NOT exist: " + file.getAbsolutePath() );
+      return null;
+    }
+    if( !file.isFile() )
+    {
+      log.warn( "File is NOT a regular file: " + file.getAbsolutePath() );
+      return null;
+    }
+    return file;
   }
   
   @Override
