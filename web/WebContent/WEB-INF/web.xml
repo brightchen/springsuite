@@ -36,7 +36,6 @@
     <param-value>
       /WEB-INF/beans.xml
       classpath:my/bc/persistent/applicationContext-datasource.xml
-      classpath:my/bc/persistent/applicationContext-persistent-units.xml
       classpath:my/bc/persistent/applicationContext-persistent.xml
       <!-- classpath:my/bc/security/simple-spring-security-configure.xml -->
       <!-- classpath:my/bc/security/spring-security-configure.xml -->
