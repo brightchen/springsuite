@@ -25,16 +25,23 @@
     <param-value>30000</param-value>
   </context-param>
   <!--====== Log4j end ======-->
-
   
+  <listener>
+    <listener-class>my.bc.web.listener.PopulatePropertiesListener</listener-class>
+  </listener>
+
   <!-- Spring beans begin -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
       /WEB-INF/beans.xml
+      classpath:my/bc/persistent/applicationContext-datasource.xml
+      classpath:my/bc/persistent/applicationContext-persistent-units.xml
+      classpath:my/bc/persistent/applicationContext-persistent.xml
       <!-- classpath:my/bc/security/simple-spring-security-configure.xml -->
       <!-- classpath:my/bc/security/spring-security-configure.xml -->
-      classpath*:**/applicationContext-*.xml
+      <!-- why following does NOT work??? -->
+      classpath:**/applicationContext-*.xml
     </param-value>
   </context-param>
 
@@ -42,6 +49,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <!--====== Spring beans end ======-->
+  
   
   <!--====== Spring security begin ======-->
   <listener>
