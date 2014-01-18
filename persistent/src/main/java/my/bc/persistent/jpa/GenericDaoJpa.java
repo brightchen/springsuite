@@ -16,7 +16,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class GenericDaoJpa<T extends BaseEntity> implements GenericDao<T>
 {
-  protected final Log log = LogFactory.getLog(getClass());
+  protected static final Log log = LogFactory.getLog( GenericDaoJpa.class );
 
   protected EntityManager entityManager;
 
