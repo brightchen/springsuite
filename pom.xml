@@ -343,6 +343,20 @@
       </dependency>
       <!--============================= Spring security end ============================= -->
 
+      <!--============================= AspectJ begin ============================= -->
+      <dependency>
+        <groupId>aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>${aspectj.aspectjrt.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>${aspectj.aspectjweaver.version}</version>
+      </dependency>
+      <!--============================= AspectJ end ============================= -->
+
       <!--============================= jackson begin ============================= -->
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
@@ -380,7 +394,7 @@
         <artifactId>asm-tree</artifactId>
         <version>${asm.version}</version>
       </dependency>
-      <!--===========================Common ASM shared with Hibernate,Spring,jruby begin =========================== -->
+      <!--===========================Common ASM shared with Hibernate,Spring,jruby end =========================== -->
 
       <!-- ============================== All Others begin ============================== -->
       <dependency>
@@ -400,6 +414,7 @@
         <artifactId>log4j</artifactId>
         <version>${log4j.version}</version>
       </dependency>
+
 
       <dependency>
         <groupId>org.snmp4j</groupId>

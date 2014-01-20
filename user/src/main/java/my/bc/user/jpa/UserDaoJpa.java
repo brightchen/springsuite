@@ -9,5 +9,8 @@ import my.bc.user.model.User;
 @Component
 public class UserDaoJpa extends GenericDaoJpa< User > implements UserDao
 {
-
+  public UserDaoJpa()
+  {
+    super( User.class );
+  }
 }

@@ -37,10 +37,11 @@
       /WEB-INF/beans.xml
       classpath:my/bc/persistent/applicationContext-datasource.xml
       classpath:my/bc/persistent/applicationContext-persistent.xml
+      classpath:my/bc/security/applicationContext-spring-security.xml
       <!-- classpath:my/bc/security/simple-spring-security-configure.xml -->
       <!-- classpath:my/bc/security/spring-security-configure.xml -->
       <!-- why following does NOT work??? -->
-      classpath:**/applicationContext-*.xml
+      <!-- classpath:**/applicationContext-*.xml -->
     </param-value>
   </context-param>
 

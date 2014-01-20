@@ -9,6 +9,12 @@
     <dependent-module archiveName="aopalliance-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
+    <dependent-module archiveName="aspectjrt-1.5.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/aspectj/aspectjrt/1.5.3/aspectjrt-1.5.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="aspectjweaver-1.5.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/aspectj/aspectjweaver/1.5.3/aspectjweaver-1.5.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
     <dependent-module archiveName="common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/common/common">
       <dependency-type>uses</dependency-type>
     </dependent-module>
@@ -88,6 +94,9 @@
       <dependency-type>uses</dependency-type>
     </dependent-module>
     <dependent-module archiveName="slf4j-api-1.5.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.5.4/slf4j-api-1.5.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="slf4j-nop-1.5.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-nop/1.5.4/slf4j-nop-1.5.4.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
     <dependent-module archiveName="spring-aop-3.0.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/spring-aop/3.0.7.RELEASE/spring-aop-3.0.7.RELEASE.jar">
