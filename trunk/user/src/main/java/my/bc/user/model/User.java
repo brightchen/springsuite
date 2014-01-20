@@ -29,7 +29,12 @@ public class User extends NamedEntity implements UserDetails
   private String email;
   private String phone;
   private String notes;
+  
+  //user status
   private boolean enabled;
+  private boolean locked;
+  private boolean expired;
+  
   
   @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
   @JoinTable(joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
@@ -133,22 +138,19 @@ public class User extends NamedEntity implements UserDetails
   @Override
   public boolean isAccountNonExpired()
   {
-    // TODO Auto-generated method stub
-    return false;
+    return (!expired);
   }
 
   @Override
   public boolean isAccountNonLocked()
   {
-    // TODO Auto-generated method stub
-    return false;
+    return (!locked);
   }
 
   @Override
   public boolean isCredentialsNonExpired()
   {
-    // TODO Auto-generated method stub
-    return false;
+    return (!expired);
   }
 
   

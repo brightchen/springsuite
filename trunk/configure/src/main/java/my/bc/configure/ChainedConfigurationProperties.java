@@ -2,8 +2,6 @@ package my.bc.configure;
 
 import java.io.File;
 
-import org.springframework.stereotype.Component;
-
 /**
  * this class services as a chain of configuration properties
  * 

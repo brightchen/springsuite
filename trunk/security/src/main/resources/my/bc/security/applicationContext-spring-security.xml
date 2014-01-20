@@ -38,7 +38,7 @@
     <form-login
       login-page="/login.jsp"
       authentication-failure-url="/login.jsp?error=true"
-      default-target-url="/home.jsp"
+      default-target-url="/views/home.jsp"
       always-use-default-target='true' />
 
     <!-- <form-login login-page="/login.jsp" authentication-failure-url="/common/403.jsp" default-target-url="/admin.jsp" 

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.FlushModeType;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -22,9 +23,9 @@ public class GenericDaoJpa<T extends BaseEntity> implements GenericDao<T>
 
   protected Class<T> persistentClass;
 
-  public GenericDaoJpa()
-  {
-  }
+//  public GenericDaoJpa()
+//  {
+//  }
 
   public GenericDaoJpa(Class<T> persistentClass)
   {
@@ -79,8 +80,15 @@ public class GenericDaoJpa<T extends BaseEntity> implements GenericDao<T>
     if( name == null || name.isEmpty() )
       throw new IllegalArgumentException( "Input parameter name should NOT empty." );
     
-    Query query = entityManager.createQuery( "from " + persistentClass.getName() + " obj where lower(name) = '" + name.toLowerCase() + "'" );
-    return (T)query.getSingleResult();
+    try
+    {
+      Query query = entityManager.createQuery( "from " + persistentClass.getName() + " obj where lower(name) = '" + name.toLowerCase() + "'" );
+      return (T)query.getSingleResult();
+    }
+    catch( NoResultException nre )
+    {
+      return null;
+    }
 
   }
   

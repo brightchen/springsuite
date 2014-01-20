@@ -1,13 +1,7 @@
 package my.bc.web.listener;
 
-import java.io.File;
-import java.net.URL;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
-import my.bc.configure.DefaultPropertiesManager;
 
 /**
  * this class populates properties in order to fulfill the spring placeholder
