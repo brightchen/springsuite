@@ -1,4 +1,4 @@
-package my.bc.common.reflection;
+package my.bc.common.convert;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -7,25 +7,30 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import my.bc.common.reflection.ReflectionUtil;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import my.bc.common.CollectionConvertInfo;
-import my.bc.common.ObjectConverter;
-
-public class ReflectionConverter implements ObjectConverter
+/**
+ * Implements the BeanConverter by copy properties using reflection
+ * 
+ * @author Bright Chen
+ *
+ */
+public class ReflectionConverter implements BeanConverter
 {
   private static final Log log = LogFactory.getLog( ReflectionConverter.class );
   
   @Override
   @SuppressWarnings( {"rawtypes","unchecked" } ) 
-  public <T> T convertObject( Object srcObj, Class<T> destType, CollectionConvertInfo collectionConvertInfo )
+  public <T> T convertBean( Object srcObj, Class<T> destType, CollectionConvertInfo collectionConvertInfo )
   {
     if( srcObj == null )
       return null;
     
     if( destType == null )
-      throw new IllegalArgumentException( "convertObject( Object srcObj, Class<T> destType ): destType should not null." );
+      throw new IllegalArgumentException( "convertBean( Object srcObj, Class<T> destType ): destType should not null." );
     
     Class<?> srcType = srcObj.getClass();
 
@@ -43,7 +48,7 @@ public class ReflectionConverter implements ObjectConverter
       }
       else
       {
-        return convertObjectByCopingProperties( srcObj, destType );
+        return convertBeanByCopingProperties( srcObj, destType );
       }
     }
 
@@ -96,7 +101,7 @@ public class ReflectionConverter implements ObjectConverter
       else
       {
         Class<?> destItemType = getConvertedToTypeForCollectionItem( item, collectionConvertInfo );
-        Object destItemValue = convertObject( item, destItemType, collectionConvertInfo );
+        Object destItemValue = convertBean( item, destItemType, collectionConvertInfo );
         destCollection.add( destItemValue );
       }
     
@@ -119,7 +124,7 @@ public class ReflectionConverter implements ObjectConverter
   }
   
   
-  public <T> T convertObjectByCopingProperties( Object srcObj, Class<T> destType )
+  public <T> T convertBeanByCopingProperties( Object srcObj, Class<T> destType )
   {
     try
     {
@@ -201,7 +206,7 @@ public class ReflectionConverter implements ObjectConverter
       {
         theSetter = (Method)potentialSetters.toArray()[0];
         Class<?> setterParameterType = theSetter.getParameterTypes()[0];
-        setterParameterValue = convertObject( getterReturnValue, setterParameterType, collectionConvertInfo );
+        setterParameterValue = convertBean( getterReturnValue, setterParameterType, collectionConvertInfo );
       }
       else
       {
@@ -214,7 +219,7 @@ public class ReflectionConverter implements ObjectConverter
             Class<?> setterParameterType = setter.getParameterTypes()[0];
             if( getterReturnValue == null || setterParameterType.isAssignableFrom( getterReturnValue.getClass() ) )
             {
-              setterParameterValue = convertObject( getterReturnValue, setterParameterType, collectionConvertInfo );
+              setterParameterValue = convertBean( getterReturnValue, setterParameterType, collectionConvertInfo );
               if( setterParameterValue != null )
               {
                 theSetter = setter;
@@ -232,7 +237,7 @@ public class ReflectionConverter implements ObjectConverter
             try
             {
               Class<?> setterParameterType = setter.getParameterTypes()[0];
-              setterParameterValue = convertObjectByCopingProperties( getterReturnValue, setterParameterType );
+              setterParameterValue = convertBeanByCopingProperties( getterReturnValue, setterParameterType );
               if( setterParameterValue != null )
               {
                 //found the setter and converted setterParameterValue

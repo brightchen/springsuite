@@ -1,4 +1,4 @@
-package my.bc.common;
+package my.bc.common.convert;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,6 +13,7 @@ import java.util.Collection;
  * @author Bright Chen
  *
  */
+
 @Target(value=ElementType.METHOD)
 @Retention(value=RetentionPolicy.RUNTIME)
 @SuppressWarnings("rawtypes")
