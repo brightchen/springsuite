@@ -14,7 +14,9 @@ import my.bc.persistent.dao.GenericDao;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GenericDaoJpa<T extends BaseEntity> implements GenericDao<T>
 {
   protected static final Log log = LogFactory.getLog( GenericDaoJpa.class );
@@ -23,9 +25,9 @@ public class GenericDaoJpa<T extends BaseEntity> implements GenericDao<T>
 
   protected Class<T> persistentClass;
 
-//  public GenericDaoJpa()
-//  {
-//  }
+  public GenericDaoJpa()
+  {
+  }
 
   public GenericDaoJpa(Class<T> persistentClass)
   {
