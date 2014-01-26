@@ -31,6 +31,7 @@
   <classpathentry kind="src" path="/persistent"/>
   <classpathentry kind="var" path="M2_REPO/org/reflections/reflections/0.9.9-RC1/reflections-0.9.9-RC1.jar"/>
   <classpathentry kind="src" path="/security"/>
+  <classpathentry kind="src" path="/service"/>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.5.4/slf4j-api-1.5.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-nop/1.5.4/slf4j-nop-1.5.4.jar"/>

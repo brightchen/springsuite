@@ -24,11 +24,11 @@
     </dependency>
     <dependency>
       <groupId>my.bc</groupId>
-      <artifactId>persistent</artifactId>
+      <artifactId>common</artifactId>
     </dependency>
     <dependency>
       <groupId>my.bc</groupId>
-      <artifactId>user</artifactId>
+      <artifactId>persistent</artifactId>
     </dependency>
     <dependency>
       <groupId>my.bc</groupId>
@@ -38,6 +38,16 @@
       <groupId>my.bc</groupId>
       <artifactId>configure</artifactId>
     </dependency>
+    <dependency>
+      <groupId>my.bc</groupId>
+      <artifactId>service</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>my.bc</groupId>
+      <artifactId>user</artifactId>
+    </dependency>
+
     <!--================= depended projects end =================-->
 
     <dependency>
