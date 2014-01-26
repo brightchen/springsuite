@@ -7,6 +7,7 @@
     <project>model</project>
     <project>persistent</project>
     <project>security</project>
+    <project>service</project>
     <project>user</project>
   </projects>
   <buildSpec>

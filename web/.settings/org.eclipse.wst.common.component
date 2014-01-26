@@ -90,6 +90,9 @@
     <dependent-module archiveName="security.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/security/security">
       <dependency-type>uses</dependency-type>
     </dependent-module>
+    <dependent-module archiveName="service.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/service/service">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
     <dependent-module archiveName="servlet-api-2.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
