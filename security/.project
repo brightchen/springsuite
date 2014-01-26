@@ -2,8 +2,10 @@
   <name>security</name>
   <comment>Fortinet&apos;s database security accessment, monitoring,and SOX compliant</comment>
   <projects>
+    <project>common</project>
     <project>model</project>
     <project>persistent</project>
+    <project>service</project>
     <project>user</project>
   </projects>
   <buildSpec>
