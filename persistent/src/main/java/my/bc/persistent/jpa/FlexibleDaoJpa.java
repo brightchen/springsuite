@@ -8,11 +8,13 @@ import javax.persistence.Query;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Service;
 
 import my.bc.model.BaseEntity;
 import my.bc.model.NamedEntity;
 import my.bc.persistent.dao.FlexibleDao;
 
+@Service
 public class FlexibleDaoJpa implements FlexibleDao
 {
   protected final Log log = LogFactory.getLog(FlexibleDaoJpa.class);

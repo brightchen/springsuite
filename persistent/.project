@@ -2,6 +2,7 @@
   <name>persistent</name>
   <comment>the persistent module</comment>
   <projects>
+    <project>common</project>
     <project>model</project>
   </projects>
   <buildSpec>
