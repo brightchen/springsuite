@@ -1,7 +1,9 @@
 package my.bc.user.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,8 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import my.bc.model.NamedEntity;
@@ -115,17 +119,43 @@ public class User extends NamedEntity implements UserDetails
   {
     return roles;
   }
-
   public void setRoles(Set<Role> roles)
   {
     this.roles = roles;
   }
+  public void addRole( Role role )
+  {
+    if( roles == null )
+      roles = new HashSet< Role >();
+    
+    roles.add( role );
+  }
 
+  
+  @Transient
+  private Set<GrantedAuthority> grantedAuthorities;
+
+  @SuppressWarnings("deprecation")
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities()
   {
-    // TODO Auto-generated method stub
-    return null;
+    if (grantedAuthorities == null)
+    {
+      synchronized(this)
+      {
+        if( grantedAuthorities == null )
+        {
+          grantedAuthorities = new HashSet<GrantedAuthority>();
+          for (Role role : getRoles())
+          {
+            // required by acegi to prefix with "ROLE_"
+            grantedAuthorities.add(new GrantedAuthorityImpl("ROLE_" + role.getName().toUpperCase()));
+          }
+        }
+      }
+    }
+
+    return grantedAuthorities;
   }
 
   // UserDetails interface

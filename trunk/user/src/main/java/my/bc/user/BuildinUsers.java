@@ -1,5 +1,6 @@
 package my.bc.user;
 
+import my.bc.user.model.Role;
 import my.bc.user.model.User;
 
 /**
@@ -20,6 +21,13 @@ public class BuildinUsers
     ADMIN.setEmail( "ADMIN@123.com" );
     ADMIN.setFirstName( "ADMIN" );
     ADMIN.setLastName( "buildin" );
+    
+    {
+      Role role = new Role();
+      role.setId( 0L );
+      role.setName( "user" );
+      ADMIN.addRole( role );
+    }
   }
 
   private static final User users[] = { ADMIN };
