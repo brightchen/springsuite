@@ -25,7 +25,7 @@
   <!-- Auto-configuration setup a free login page, support for HTTP Basic authentication and logging out -->
   <http
     auto-config="true"
-    access-denied-page="/accessDenied.jsp">
+    access-denied-page="/login.jsp?error=access-denied">
     <!-- override the default login form, /static means don't handle it by spring mvc DispatcherServlet <form-login login-processing-url="/static/j_spring_security_check" 
       login-page="/login" authentication-failure-url="/login?login_error=t"/> -->
 
@@ -37,7 +37,7 @@
   
     <form-login
       login-page="/login.jsp"
-      authentication-failure-url="/login.jsp?error=true"
+      authentication-failure-url="/login.jsp?error=authentication-failure"
       default-target-url="/views/home.jsp"
       always-use-default-target='true' />
 
@@ -45,7 +45,7 @@
       /> <logout logout-success-url="/login.jsp"/> <http-basic /> -->
     <session-management
       session-authentication-error-url="/402.jsp"
-      invalid-session-url="/sessionTimeout.jsp">
+      invalid-session-url="/login.jsp">
       <concurrency-control
         max-sessions="1"
         error-if-maximum-exceeded="true" />
