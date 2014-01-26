@@ -22,6 +22,7 @@
     <module>web</module>
     <module>configure</module>
     <module>common</module>
+    <module>service</module>
   </modules>
 
   <dependencyManagement>
@@ -44,11 +45,6 @@
       </dependency>
       <dependency>
         <groupId>my.bc</groupId>
-        <artifactId>user</artifactId>
-        <version>${application.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>my.bc</groupId>
         <artifactId>web</artifactId>
         <version>${application.version}</version>
       </dependency>
@@ -60,6 +56,17 @@
       <dependency>
         <groupId>my.bc</groupId>
         <artifactId>common</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>service</artifactId>
+        <version>${application.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>my.bc</groupId>
+        <artifactId>user</artifactId>
         <version>${application.version}</version>
       </dependency>
 
