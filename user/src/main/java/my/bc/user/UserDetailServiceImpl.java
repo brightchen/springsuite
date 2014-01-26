@@ -20,7 +20,7 @@ public class UserDetailServiceImpl implements UserDetailsService
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
   {
     System.out.println("username is " + username);
-    User user = userService.findUserByName(username);
+    User user = userService.getUserByName(username);
     if (user == null)
     {
       throw new UsernameNotFoundException(username);
