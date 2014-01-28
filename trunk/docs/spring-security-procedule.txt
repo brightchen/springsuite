@@ -1,0 +1,330 @@
+################################## use simple-spring-security-configure.xml log begin ##################################
+2014-01-20 15:42:41,548 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 1 of 11 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 15:42:41,548 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No HttpSession currently exists>
+2014-01-20 15:42:41,548 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No SecurityContext was available from the HttpSession: null. A new one will be created.>
+2014-01-20 15:42:41,548 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 2 of 11 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 15:42:41,549 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 3 of 11 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 4 of 11 in additional filter chain; firing Filter: 'DefaultLoginPageGeneratingFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 5 of 11 in additional filter chain; firing Filter: 'BasicAuthenticationFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 6 of 11 in additional filter chain; firing Filter: 'RequestCacheAwareFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 7 of 11 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 8 of 11 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.authentication.AnonymousAuthenticationFilter] - <Populated SecurityContextHolder with anonymous token: 'org.springframework.security.authentication.AnonymousAuthenticationToken@9055c2bc: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 9 of 11 in additional filter chain; firing Filter: 'SessionManagementFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 10 of 11 in additional filter chain; firing Filter: 'ExceptionTranslationFilter'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 11 of 11 in additional filter chain; firing Filter: 'FilterSecurityInterceptor'>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Secure object: FilterInvocation: URL: /views/home.jsp; Attributes: [ROLE_USER]>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Previously Authenticated: org.springframework.security.authentication.AnonymousAuthenticationToken@9055c2bc: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.RoleVoter@78f1f2cc, returned: -1>
+2014-01-20 15:42:41,550 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.AuthenticatedVoter@1c727896, returned: 0>
+2014-01-20 15:42:41,564 DEBUG [org.springframework.security.web.access.ExceptionTranslationFilter] - <Access is denied (user is anonymous); redirecting to authentication entry point>
+org.springframework.security.access.AccessDeniedException: Access is denied
+	at org.springframework.security.access.vote.AffirmativeBased.decide(AffirmativeBased.java:83)
+	at org.springframework.security.access.intercept.AbstractSecurityInterceptor.beforeInvocation(AbstractSecurityInterceptor.java:206)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:54)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:183)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:99)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1023)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:589)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:312)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-20 15:42:41,569 DEBUG [org.springframework.security.web.session.HttpSessionEventPublisher] - <Publishing event: org.springframework.security.web.session.HttpSessionCreatedEvent[source=org.apache.catalina.session.StandardSessionFacade@f0d1e0b]>
+2014-01-20 15:42:41,570 DEBUG [org.springframework.security.web.savedrequest.HttpSessionRequestCache] - <DefaultSavedRequest added to Session: DefaultSavedRequest[http://localhost:8080/web/]>
+2014-01-20 15:42:41,570 DEBUG [org.springframework.security.web.access.ExceptionTranslationFilter] - <Calling Authentication entry point.>
+2014-01-20 15:42:41,572 DEBUG [org.springframework.security.web.DefaultRedirectStrategy] - <Redirecting to 'http://localhost:8080/web/spring_security_login;jsessionid=5DF0D7F710EB9CFA9853CA4CC4B6AFA3'>
+2014-01-20 15:42:41,572 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.>
+2014-01-20 15:42:41,572 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.FilterChainProxy] - </spring_security_login at position 1 of 11 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <HttpSession returned null object for SPRING_SECURITY_CONTEXT>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No SecurityContext was available from the HttpSession: org.apache.catalina.session.StandardSessionFacade@f0d1e0b. A new one will be created.>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.FilterChainProxy] - </spring_security_login at position 2 of 11 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.FilterChainProxy] - </spring_security_login at position 3 of 11 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.FilterChainProxy] - </spring_security_login at position 4 of 11 in additional filter chain; firing Filter: 'DefaultLoginPageGeneratingFilter'>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.>
+2014-01-20 15:42:41,581 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+2014-01-20 15:42:53,475 DEBUG [org.springframework.security.web.FilterChainProxy] - </j_spring_security_check at position 1 of 11 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 15:42:53,476 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <HttpSession returned null object for SPRING_SECURITY_CONTEXT>
+2014-01-20 15:42:53,476 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No SecurityContext was available from the HttpSession: org.apache.catalina.session.StandardSessionFacade@f0d1e0b. A new one will be created.>
+2014-01-20 15:42:53,476 DEBUG [org.springframework.security.web.FilterChainProxy] - </j_spring_security_check at position 2 of 11 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 15:42:53,476 DEBUG [org.springframework.security.web.FilterChainProxy] - </j_spring_security_check at position 3 of 11 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 15:42:53,476 DEBUG [org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter] - <Request is to process authentication>
+2014-01-20 15:42:53,476 DEBUG [org.springframework.security.authentication.ProviderManager] - <Authentication attempt using org.springframework.security.authentication.dao.DaoAuthenticationProvider>
+2014-01-20 15:42:53,480 DEBUG [org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy] - <Invalidating session with Id '5DF0D7F710EB9CFA9853CA4CC4B6AFA3' and migrating attributes.>
+2014-01-20 15:42:53,480 DEBUG [org.springframework.security.web.session.HttpSessionEventPublisher] - <Publishing event: org.springframework.security.web.session.HttpSessionDestroyedEvent[source=org.apache.catalina.session.StandardSessionFacade@f0d1e0b]>
+2014-01-20 15:42:53,480 DEBUG [org.springframework.security.web.session.HttpSessionEventPublisher] - <Publishing event: org.springframework.security.web.session.HttpSessionCreatedEvent[source=org.apache.catalina.session.StandardSessionFacade@53ffb7d4]>
+2014-01-20 15:42:53,481 DEBUG [org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy] - <Started new session: CB29B87276D3643CE9E802B03BB6F978>
+2014-01-20 15:42:53,481 DEBUG [org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter] - <Authentication success. Updating SecurityContextHolder to contain: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@4bc9b896: Principal: org.springframework.security.core.userdetails.User@f02988d6: Username: username; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_USER; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@fffd3270: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 5DF0D7F710EB9CFA9853CA4CC4B6AFA3; Granted Authorities: ROLE_USER>
+2014-01-20 15:42:53,481 DEBUG [org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler] - <Redirecting to DefaultSavedRequest Url: http://localhost:8080/web/>
+2014-01-20 15:42:53,481 DEBUG [org.springframework.security.web.DefaultRedirectStrategy] - <Redirecting to 'http://localhost:8080/web/'>
+2014-01-20 15:42:53,481 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <SecurityContext stored to HttpSession: 'org.springframework.security.core.context.SecurityContextImpl@4bc9b896: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@4bc9b896: Principal: org.springframework.security.core.userdetails.User@f02988d6: Username: username; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_USER; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@fffd3270: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 5DF0D7F710EB9CFA9853CA4CC4B6AFA3; Granted Authorities: ROLE_USER'>
+2014-01-20 15:42:53,481 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 1 of 11 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <Obtained a valid SecurityContext from SPRING_SECURITY_CONTEXT: 'org.springframework.security.core.context.SecurityContextImpl@4bc9b896: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@4bc9b896: Principal: org.springframework.security.core.userdetails.User@f02988d6: Username: username; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_USER; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@fffd3270: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 5DF0D7F710EB9CFA9853CA4CC4B6AFA3; Granted Authorities: ROLE_USER'>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 2 of 11 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 3 of 11 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 4 of 11 in additional filter chain; firing Filter: 'DefaultLoginPageGeneratingFilter'>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 5 of 11 in additional filter chain; firing Filter: 'BasicAuthenticationFilter'>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 6 of 11 in additional filter chain; firing Filter: 'RequestCacheAwareFilter'>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <pathInfo: both null (property equals)>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <queryString: both null (property equals)>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <requestURI: arg1=/web/; arg2=/web/ (property equals)>
+2014-01-20 15:42:53,574 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <serverPort: arg1=8080; arg2=8080 (property equals)>
+2014-01-20 15:42:53,575 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <requestURL: arg1=http://localhost:8080/web/; arg2=http://localhost:8080/web/ (property equals)>
+2014-01-20 15:42:53,575 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <scheme: arg1=http; arg2=http (property equals)>
+2014-01-20 15:42:53,575 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <serverName: arg1=localhost; arg2=localhost (property equals)>
+2014-01-20 15:42:53,575 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <contextPath: arg1=/web; arg2=/web (property equals)>
+2014-01-20 15:42:53,575 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <servletPath: arg1=/views/home.jsp; arg2=/views/home.jsp (property equals)>
+2014-01-20 15:42:53,575 DEBUG [org.springframework.security.web.savedrequest.HttpSessionRequestCache] - <Removing DefaultSavedRequest from session if present>
+2014-01-20 15:42:53,576 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 7 of 11 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter'>
+2014-01-20 15:42:53,576 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 8 of 11 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter'>
+2014-01-20 15:42:53,576 DEBUG [org.springframework.security.web.authentication.AnonymousAuthenticationFilter] - <SecurityContextHolder not populated with anonymous token, as it already contained: 'org.springframework.security.authentication.UsernamePasswordAuthenticationToken@4bc9b896: Principal: org.springframework.security.core.userdetails.User@f02988d6: Username: username; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_USER; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@fffd3270: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 5DF0D7F710EB9CFA9853CA4CC4B6AFA3; Granted Authorities: ROLE_USER'>
+2014-01-20 15:42:53,576 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 9 of 11 in additional filter chain; firing Filter: 'SessionManagementFilter'>
+2014-01-20 15:42:53,576 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 10 of 11 in additional filter chain; firing Filter: 'ExceptionTranslationFilter'>
+2014-01-20 15:42:53,576 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 11 of 11 in additional filter chain; firing Filter: 'FilterSecurityInterceptor'>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Secure object: FilterInvocation: URL: /views/home.jsp; Attributes: [ROLE_USER]>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Previously Authenticated: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@4bc9b896: Principal: org.springframework.security.core.userdetails.User@f02988d6: Username: username; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_USER; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@fffd3270: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 5DF0D7F710EB9CFA9853CA4CC4B6AFA3; Granted Authorities: ROLE_USER>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.RoleVoter@78f1f2cc, returned: 1>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Authorization successful>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <RunAsManager did not change Authentication object>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp reached end of additional filter chain; proceeding with original chain>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.web.access.ExceptionTranslationFilter] - <Chain processed normally>
+2014-01-20 15:42:53,577 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+################################## use simple-spring-security-configure.xml log end ##################################
+
+
+
+
+
+################################## use applicationContext-spring-security.xml log begin ##################################
+2014-01-20 16:05:05,213 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/views/home.jsp'; against '/**/*.jpg'>
+2014-01-20 16:05:05,213 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/views/home.jsp'; against '/**/*.png'>
+2014-01-20 16:05:05,213 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/views/home.jsp'; against '/**/*.gif'>
+2014-01-20 16:05:05,213 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/views/home.jsp'; against '/**/*.css'>
+2014-01-20 16:05:05,213 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/views/home.jsp'; against '/**/*.js'>
+2014-01-20 16:05:05,214 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 1 of 13 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 16:05:05,215 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No HttpSession currently exists>
+2014-01-20 16:05:05,215 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No SecurityContext was available from the HttpSession: null. A new one will be created.>
+2014-01-20 16:05:05,217 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 2 of 13 in additional filter chain; firing Filter: 'ConcurrentSessionFilter'>
+2014-01-20 16:05:05,217 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 3 of 13 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 16:05:05,217 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 4 of 13 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 16:05:05,217 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 5 of 13 in additional filter chain; firing Filter: 'BasicAuthenticationFilter'>
+2014-01-20 16:05:05,218 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 6 of 13 in additional filter chain; firing Filter: 'RequestCacheAwareFilter'>
+2014-01-20 16:05:05,218 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 7 of 13 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter'>
+2014-01-20 16:05:05,218 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 8 of 13 in additional filter chain; firing Filter: 'RememberMeAuthenticationFilter'>
+2014-01-20 16:05:05,218 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 9 of 13 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter'>
+2014-01-20 16:05:05,219 DEBUG [org.springframework.security.web.authentication.AnonymousAuthenticationFilter] - <Populated SecurityContextHolder with anonymous token: 'org.springframework.security.authentication.AnonymousAuthenticationToken@9055c2bc: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS'>
+2014-01-20 16:05:05,219 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 10 of 13 in additional filter chain; firing Filter: 'SessionManagementFilter'>
+2014-01-20 16:05:05,219 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 11 of 13 in additional filter chain; firing Filter: 'ExceptionTranslationFilter'>
+2014-01-20 16:05:05,219 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 12 of 13 in additional filter chain; firing Filter: 'SecurityFilter'>
+requestUrl is /views/home.jsp
+2014-01-20 16:05:31,013 DEBUG [my.bc.security.SecurityFilter] - <Public object - authentication not attempted>
+2014-01-20 16:05:31,013 DEBUG [org.springframework.beans.factory.support.DefaultListableBeanFactory] - <Returning cached instance of singleton bean 'org.springframework.security.core.session.SessionRegistryImpl#0'>
+2014-01-20 16:05:31,013 DEBUG [org.springframework.security.web.FilterChainProxy] - </views/home.jsp at position 13 of 13 in additional filter chain; firing Filter: 'FilterSecurityInterceptor'>
+2014-01-20 16:05:31,014 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/views/home.jsp'; against '/login.jsp'>
+2014-01-20 16:05:31,014 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/views/home.jsp'; against '/views/*.jsp'>
+2014-01-20 16:05:31,014 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Secure object: FilterInvocation: URL: /views/home.jsp; Attributes: [ROLE_USER]>
+2014-01-20 16:05:31,015 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Previously Authenticated: org.springframework.security.authentication.AnonymousAuthenticationToken@9055c2bc: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS>
+2014-01-20 16:05:31,015 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.RoleVoter@15128ee5, returned: -1>
+2014-01-20 16:05:31,015 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.AuthenticatedVoter@75636731, returned: 0>
+2014-01-20 16:05:31,017 DEBUG [org.springframework.beans.factory.support.DefaultListableBeanFactory] - <Returning cached instance of singleton bean 'org.springframework.security.core.session.SessionRegistryImpl#0'>
+2014-01-20 16:05:31,019 DEBUG [org.springframework.security.web.access.ExceptionTranslationFilter] - <Access is denied (user is anonymous); redirecting to authentication entry point>
+org.springframework.security.access.AccessDeniedException: Access is denied
+	at org.springframework.security.access.vote.AffirmativeBased.decide(AffirmativeBased.java:83)
+	at org.springframework.security.access.intercept.AbstractSecurityInterceptor.beforeInvocation(AbstractSecurityInterceptor.java:206)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:84)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at my.bc.security.SecurityFilter.invoke(SecurityFilter.java:66)
+	at my.bc.security.SecurityFilter.doFilter(SecurityFilter.java:39)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:103)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:139)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:54)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:45)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilter(BasicAuthenticationFilter.java:150)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:183)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:125)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:342)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:192)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:160)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:99)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1023)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:589)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-20 16:05:31,027 DEBUG [org.springframework.security.web.session.HttpSessionEventPublisher] - <Publishing event: org.springframework.security.web.session.HttpSessionCreatedEvent[source=org.apache.catalina.session.StandardSessionFacade@7170c7a3]>
+2014-01-20 16:05:31,027 DEBUG [org.springframework.beans.factory.support.DefaultListableBeanFactory] - <Returning cached instance of singleton bean 'org.springframework.security.core.session.SessionRegistryImpl#0'>
+2014-01-20 16:05:31,029 DEBUG [org.springframework.security.web.savedrequest.HttpSessionRequestCache] - <DefaultSavedRequest added to Session: DefaultSavedRequest[http://localhost:8080/web/]>
+2014-01-20 16:05:31,029 DEBUG [org.springframework.security.web.access.ExceptionTranslationFilter] - <Calling Authentication entry point.>
+2014-01-20 16:05:31,030 DEBUG [org.springframework.security.web.DefaultRedirectStrategy] - <Redirecting to 'http://localhost:8080/web/login.jsp;jsessionid=3C3CB408CDBFD2E8A701F1630CC5095C'>
+2014-01-20 16:05:31,030 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.>
+2014-01-20 16:05:31,031 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+2014-01-20 16:05:31,053 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.jpg'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.png'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.gif'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.css'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.js'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 1 of 13 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <HttpSession returned null object for SPRING_SECURITY_CONTEXT>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No SecurityContext was available from the HttpSession: org.apache.catalina.session.StandardSessionFacade@7170c7a3. A new one will be created.>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 2 of 13 in additional filter chain; firing Filter: 'ConcurrentSessionFilter'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 3 of 13 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 4 of 13 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 5 of 13 in additional filter chain; firing Filter: 'BasicAuthenticationFilter'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 6 of 13 in additional filter chain; firing Filter: 'RequestCacheAwareFilter'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <pathInfo: both null (property equals)>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <queryString: both null (property equals)>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <requestURI: arg1=/web/; arg2=/web/login.jsp;jsessionid=3C3CB408CDBFD2E8A701F1630CC5095C (property not equals)>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.savedrequest.HttpSessionRequestCache] - <saved request doesn't match>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 7 of 13 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter'>
+2014-01-20 16:05:31,054 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 8 of 13 in additional filter chain; firing Filter: 'RememberMeAuthenticationFilter'>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 9 of 13 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter'>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.authentication.AnonymousAuthenticationFilter] - <Populated SecurityContextHolder with anonymous token: 'org.springframework.security.authentication.AnonymousAuthenticationToken@6faa3d44: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@ffff4c9c: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 3C3CB408CDBFD2E8A701F1630CC5095C; Granted Authorities: ROLE_ANONYMOUS'>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 10 of 13 in additional filter chain; firing Filter: 'SessionManagementFilter'>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 11 of 13 in additional filter chain; firing Filter: 'ExceptionTranslationFilter'>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 12 of 13 in additional filter chain; firing Filter: 'SecurityFilter'>
+requestUrl is /login.jsp
+2014-01-20 16:05:31,055 DEBUG [my.bc.security.SecurityFilter] - <Public object - authentication not attempted>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp at position 13 of 13 in additional filter chain; firing Filter: 'FilterSecurityInterceptor'>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/login.jsp'>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Secure object: FilterInvocation: URL: /login.jsp; Attributes: [IS_AUTHENTICATED_ANONYMOUSLY]>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Previously Authenticated: org.springframework.security.authentication.AnonymousAuthenticationToken@6faa3d44: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@ffff4c9c: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 3C3CB408CDBFD2E8A701F1630CC5095C; Granted Authorities: ROLE_ANONYMOUS>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.RoleVoter@15128ee5, returned: 0>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.AuthenticatedVoter@75636731, returned: 1>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Authorization successful>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <RunAsManager did not change Authentication object>
+2014-01-20 16:05:31,055 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp reached end of additional filter chain; proceeding with original chain>
+2014-01-20 16:05:31,187 INFO [my.bc.security.SecurityFilter] - <user anonymousUser has been authenticated>
+2014-01-20 16:05:31,187 DEBUG [org.springframework.security.web.access.ExceptionTranslationFilter] - <Chain processed normally>
+2014-01-20 16:05:31,188 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.>
+2014-01-20 16:05:31,188 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+==========================================================================================================================
+====== login as admin/admin123
+2014-01-20 16:07:43,953 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/j_spring_security_check'; against '/**/*.jpg'>
+2014-01-20 16:07:43,953 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/j_spring_security_check'; against '/**/*.png'>
+2014-01-20 16:07:43,953 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/j_spring_security_check'; against '/**/*.gif'>
+2014-01-20 16:07:43,953 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/j_spring_security_check'; against '/**/*.css'>
+2014-01-20 16:07:43,953 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/j_spring_security_check'; against '/**/*.js'>
+2014-01-20 16:07:43,953 DEBUG [org.springframework.security.web.FilterChainProxy] - </j_spring_security_check at position 1 of 13 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 16:07:43,963 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <HttpSession returned null object for SPRING_SECURITY_CONTEXT>
+2014-01-20 16:07:43,963 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No SecurityContext was available from the HttpSession: org.apache.catalina.session.StandardSessionFacade@7170c7a3. A new one will be created.>
+2014-01-20 16:07:43,963 DEBUG [org.springframework.security.web.FilterChainProxy] - </j_spring_security_check at position 2 of 13 in additional filter chain; firing Filter: 'ConcurrentSessionFilter'>
+2014-01-20 16:07:43,963 DEBUG [org.springframework.security.web.FilterChainProxy] - </j_spring_security_check at position 3 of 13 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 16:07:43,963 DEBUG [org.springframework.security.web.FilterChainProxy] - </j_spring_security_check at position 4 of 13 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 16:07:43,963 DEBUG [org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter] - <Request is to process authentication>
+2014-01-20 16:07:43,963 DEBUG [org.springframework.security.authentication.ProviderManager] - <Authentication attempt using org.springframework.security.authentication.dao.DaoAuthenticationProvider>
+username is admin
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.authentication.dao.DaoAuthenticationProvider] - <User account is locked>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.beans.factory.support.DefaultListableBeanFactory] - <Returning cached instance of singleton bean 'org.springframework.security.core.session.SessionRegistryImpl#0'>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter] - <Authentication request failed: org.springframework.security.authentication.LockedException: User account is locked>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter] - <Updated SecurityContextHolder to contain null Authentication>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter] - <Delegating to authentication failure handler org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler@b4aa453>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices] - <Interactive login attempt was unsuccessful.>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices] - <Cancelling cookie>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler] - <Redirecting to /login.jsp?error=true>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.DefaultRedirectStrategy] - <Redirecting to '/web/login.jsp?error=true'>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.>
+2014-01-20 16:07:43,974 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.jpg'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.png'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.gif'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.css'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/**/*.js'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 1 of 13 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <HttpSession returned null object for SPRING_SECURITY_CONTEXT>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <No SecurityContext was available from the HttpSession: org.apache.catalina.session.StandardSessionFacade@7170c7a3. A new one will be created.>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 2 of 13 in additional filter chain; firing Filter: 'ConcurrentSessionFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 3 of 13 in additional filter chain; firing Filter: 'LogoutFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 4 of 13 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 5 of 13 in additional filter chain; firing Filter: 'BasicAuthenticationFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 6 of 13 in additional filter chain; firing Filter: 'RequestCacheAwareFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <pathInfo: both null (property equals)>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.savedrequest.DefaultSavedRequest] - <queryString: arg1=null; arg2=error=true (property not equals)>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.savedrequest.HttpSessionRequestCache] - <saved request doesn't match>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 7 of 13 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 8 of 13 in additional filter chain; firing Filter: 'RememberMeAuthenticationFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 9 of 13 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.authentication.AnonymousAuthenticationFilter] - <Populated SecurityContextHolder with anonymous token: 'org.springframework.security.authentication.AnonymousAuthenticationToken@6faa3d44: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@ffff4c9c: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 3C3CB408CDBFD2E8A701F1630CC5095C; Granted Authorities: ROLE_ANONYMOUS'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 10 of 13 in additional filter chain; firing Filter: 'SessionManagementFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 11 of 13 in additional filter chain; firing Filter: 'ExceptionTranslationFilter'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 12 of 13 in additional filter chain; firing Filter: 'SecurityFilter'>
+requestUrl is /login.jsp?error=true
+2014-01-20 16:07:44,034 DEBUG [my.bc.security.SecurityFilter] - <Public object - authentication not attempted>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true at position 13 of 13 in additional filter chain; firing Filter: 'FilterSecurityInterceptor'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.util.AntPathRequestMatcher] - <Checking match of request : '/login.jsp'; against '/login.jsp'>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Secure object: FilterInvocation: URL: /login.jsp?error=true; Attributes: [IS_AUTHENTICATED_ANONYMOUSLY]>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Previously Authenticated: org.springframework.security.authentication.AnonymousAuthenticationToken@6faa3d44: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@ffff4c9c: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 3C3CB408CDBFD2E8A701F1630CC5095C; Granted Authorities: ROLE_ANONYMOUS>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.RoleVoter@15128ee5, returned: 0>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.access.vote.AffirmativeBased] - <Voter: org.springframework.security.access.vote.AuthenticatedVoter@75636731, returned: 1>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <Authorization successful>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.access.intercept.FilterSecurityInterceptor] - <RunAsManager did not change Authentication object>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.FilterChainProxy] - </login.jsp?error=true reached end of additional filter chain; proceeding with original chain>
+2014-01-20 16:07:44,034 INFO [my.bc.security.SecurityFilter] - <user anonymousUser has been authenticated>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.access.ExceptionTranslationFilter] - <Chain processed normally>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.context.HttpSessionSecurityContextRepository] - <SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.>
+2014-01-20 16:07:44,034 DEBUG [org.springframework.security.web.context.SecurityContextPersistenceFilter] - <SecurityContextHolder now cleared, as request processing completed>
+====== login as admin/admin123 end
+################################## use applicationContext-spring-security.xml log begin ##################################
