@@ -7,12 +7,13 @@
   <title>Home Page</title>
 </head>
 <body>
-  <div id="menuDiv" class="menuDiv">
+  <div id="menuDiv"  class="menuDiv">
     <ul id="menuRoot" class="menuRoot">
       <li>
-        <a href='javascript:void(0);' childid = 'c_12' class='cat_close category'>&nbsp;</a>
+        <a href='javascript:void(0);' class='cat_close category'>&nbsp;</a>
         <a href='javascript:void(0);'>Diabeties</a>
       </li>
+    </ul>
     <ul id='c_13'>
       <li>
         <a href='javascript:void(0);' class='product'>&nbsp;</a>
@@ -22,7 +23,12 @@
         
   </div>   
   
-  <iframe id="content" src="content.html" width="500" >
+  <p>Display image now</p>
+  <img src="<%= request.getContextPath() %>/resources/img/img1.jpg" alt="img1.jpg" />
+
+
+  <iframe id="content" src="<%= request.getContextPath() %>/resources/html/content.html" width="500" >
   </iframe>
+
 </body>
 </html>

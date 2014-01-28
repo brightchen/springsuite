@@ -17,31 +17,39 @@ public class AccessDecisionManagerImpl implements AccessDecisionManager
           Object object, Collection<ConfigAttribute> configAttributes) 
                   throws AccessDeniedException, InsufficientAuthenticationException
   {
-    if (configAttributes == null)
+    // configAttributes is null or empty means don't need any permission to access the resource.
+    if ( configAttributes == null || configAttributes.isEmpty() )
     {
       return;
     }
-    // 所请求的资源拥有的权限(一个资源对多个权限)
-    Iterator<ConfigAttribute> iterator = configAttributes.iterator();
-    while (iterator.hasNext())
+    
+    for( ConfigAttribute configAttribute : configAttributes )
     {
-      ConfigAttribute configAttribute = iterator.next();
-      // 访问所请求资源所需要的权限
-      String needPermission = configAttribute.getAttribute();
-      System.out.println("needPermission is " + needPermission);
-      // 用户所拥有的权限authentication
-      for (GrantedAuthority ga : authentication.getAuthorities())
-      {
-        if (needPermission.equals(ga.getAuthority()))
-        {
-          return;
-        }
-      }
+      if( hasAuthority( authentication, configAttribute ) )
+        return;
     }
-    // 没有权限
-    throw new AccessDeniedException(" 没有权限访问！ ");
+    throw new AccessDeniedException( "Access Denied. Principal: " + authentication.getName() );
   }
 
+  
+  protected boolean hasAuthority( Authentication authentication, ConfigAttribute configAttribute )
+  {
+    // required permission
+    String needPermission = configAttribute.getAttribute();
+
+    // the permissions for this authentication
+    for (GrantedAuthority ga : authentication.getAuthorities())
+    {
+      // simple string compare, we need other logic
+      if (needPermission.equalsIgnoreCase( ga.getAuthority()) )
+      {
+        return true;
+      }
+    }
+    
+    return false;
+  }
+  
   public boolean supports(ConfigAttribute attribute)
   {
     // TODO Auto-generated method stub
