@@ -1,7 +1,6 @@
 package my.bc.security;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
