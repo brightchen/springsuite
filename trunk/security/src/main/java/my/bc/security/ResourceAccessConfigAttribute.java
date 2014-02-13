@@ -28,7 +28,6 @@ public class ResourceAccessConfigAttribute implements ConfigAttribute
     setAccessOperation( accessOperation );
   }
   
-  @Override
   public String getAttribute()
   {
     return composeConfigAttribute();

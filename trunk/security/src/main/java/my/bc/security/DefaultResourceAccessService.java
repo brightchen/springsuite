@@ -1,7 +1,6 @@
 package my.bc.security;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +21,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class DefaultResourceAccessService implements ResourceAccessService
 {
-  @Override
   public Collection<ConfigAttribute> getResourceAccessAttributes( FilterInvocation filterInvocation )
   {
-    String fullRequestUrl = filterInvocation.getFullRequestUrl();
+//    String fullRequestUrl = filterInvocation.getFullRequestUrl();
     String requestUrl = filterInvocation.getRequestUrl();
 
     HttpServletRequest request = filterInvocation.getHttpRequest();
