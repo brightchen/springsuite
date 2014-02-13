@@ -3,12 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.fortinet.fortidb</groupId>
-    <artifactId>fortidb-parent</artifactId>
-    <version>2</version>
+    <groupId>my.bc</groupId>
+    <artifactId>my-bc-parent</artifactId>
+    <version>1</version>
   </parent>
 
-  <groupId>my.bc</groupId>
   <artifactId>springsuite</artifactId>
   <name>springsuite</name>
   <version>0.0.1-SNAPSHOT</version>
