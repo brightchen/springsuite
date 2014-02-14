@@ -34,7 +34,6 @@ public class DefaultPropertiesManager implements PropertiesManager
     this.contextPath = contextPath;
   }
 
-  @Override
   public void populateProperties()
   {
     File[] propertyFiles = configurationProperties.getPropertyFiles();

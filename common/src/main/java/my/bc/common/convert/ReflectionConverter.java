@@ -22,7 +22,6 @@ public class ReflectionConverter implements BeanConverter
 {
   private static final Log log = LogFactory.getLog( ReflectionConverter.class );
   
-  @Override
   @SuppressWarnings( {"rawtypes","unchecked" } ) 
   public <T> T convertBean( Object srcObj, Class<T> destType, CollectionConvertInfo collectionConvertInfo )
   {
@@ -140,7 +139,6 @@ public class ReflectionConverter implements BeanConverter
     }
   }
   
-  @Override
   public void copyProperties( Object srcObj, Object destObj )
   {
     if( srcObj == null || destObj == null )
@@ -180,7 +178,6 @@ public class ReflectionConverter implements BeanConverter
    * @param destSetter
    * @return true if copy success.
    */
-  @Override
   public boolean copyProperty( Object srcObj, Method srcGetter, Object destObj, Collection<Method> potentialSetters )
   {
     if( srcObj == null || destObj == null || srcGetter == null || potentialSetters == null || potentialSetters.isEmpty() )
