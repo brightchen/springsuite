@@ -23,7 +23,6 @@ public class DefaultConfigurationProperties implements ConfigurationProperties
 {
   private static final Log log = LogFactory.getLog( DefaultConfigurationProperties.class );
   
-  @Override
   public File[] getPropertyFiles()
   {
     return getPropertiesFileFromClassPath( "my.bc" );
@@ -69,14 +68,12 @@ public class DefaultConfigurationProperties implements ConfigurationProperties
     return file;
   }
   
-  @Override
   public File getHomeDir()
   {
     return new File( "." );
   }
   
 
-  @Override
   public File getConfDir()
   {
     return new File( getHomeDir(), "conf" );

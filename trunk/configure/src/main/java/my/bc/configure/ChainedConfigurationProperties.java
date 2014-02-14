@@ -23,7 +23,6 @@ public class ChainedConfigurationProperties extends ContextDepended implements C
   protected ConfigurationProperties configurations[] = new ConfigurationProperties[]{ new ConfigurableConfigurationProperties(), 
                                                                                       new DefaultConfigurationProperties() };
   
-  @Override
   public File[] getPropertyFiles()
   {
     for( ConfigurationProperties configuration : getDelegatedToConfigurationProperties() )
@@ -40,7 +39,6 @@ public class ChainedConfigurationProperties extends ContextDepended implements C
     return configurations;
   }
 
-  @Override
   public File getHomeDir()
   {
     for( ConfigurationProperties configuration : getDelegatedToConfigurationProperties() )
@@ -52,7 +50,6 @@ public class ChainedConfigurationProperties extends ContextDepended implements C
     return null;
   }
 
-  @Override
   public File getConfDir()
   {
     for( ConfigurationProperties configuration : getDelegatedToConfigurationProperties() )

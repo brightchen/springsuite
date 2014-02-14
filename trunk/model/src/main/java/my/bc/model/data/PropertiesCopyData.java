@@ -20,7 +20,6 @@ public class PropertiesCopyData<T> implements ResponseData<T>, RequestData<T>, S
   @Autowired
   private BeanConverter beanConverter;
   
-  @Override
   public void toData( T bean)
   {
     beforeCopyPropertiesFromBean( bean );
@@ -28,7 +27,6 @@ public class PropertiesCopyData<T> implements ResponseData<T>, RequestData<T>, S
     afterCopyPropertiesFromBean( bean );
   }
   
-  @Override
   public T toBean(T bean)
   {
     beforeCopyPropertiesToBean( bean );
