@@ -124,14 +124,16 @@
     <plugins>
 
       <!-- define web context name -->
+      <!-- 
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
         <configuration>
           <wtpContextName>web</wtpContextName>
         </configuration>
       </plugin>
-
+      -->
       <!-- define the war source directory -->
+      <!-- 
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
@@ -139,7 +141,7 @@
           <archiveClasses>true</archiveClasses>
         </configuration>
       </plugin>
-
+      -->
     </plugins>
   </build>
   

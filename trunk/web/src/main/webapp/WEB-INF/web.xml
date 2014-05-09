@@ -36,9 +36,11 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
       /WEB-INF/beans.xml
+      <!-- why can't find this fileclasspath:my/bc/configure/applicationContext-general.xml -->
       classpath:my/bc/persistent/applicationContext-datasource.xml
       classpath:my/bc/persistent/applicationContext-persistent.xml
-      classpath:my/bc/security/applicationContext-spring-security.xml
+      classpath:my/bc/security/applicationContext-spring-cas-security.xml
+      <!-- classpath:my/bc/security/applicationContext-spring-security.xml -->
       <!-- classpath:my/bc/security/simple-spring-security-configure.xml -->
       <!-- classpath:my/bc/security/spring-security-configure.xml -->
       <!-- why following does NOT work??? -->
