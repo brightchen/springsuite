@@ -13,12 +13,16 @@
   <context:annotation-config/>
   <context:component-scan base-package="my.bc.*"/>
 
-  <!-- use spring PropertyPlaceholderConfigurer use properties --> 
- <bean
-    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    <!-- properties < locations (previous) < locations(afterward) < systemProperties -->
-    <property name="ignoreResourceNotFound" value="false" />
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
-    <property name="locations" value="classpath:/my/bc/persistent/persistent.properties"></property>
+
+    <property name="locations">
+      <list>
+        <value>classpath:my/bc/persistent/persistent.properties</value>
+        <value>classpath:my/bc/security/security.properties</value>
+      </list>
+    </property>
+    <property name="ignoreUnresolvablePlaceholders" value="false" />
   </bean>
+  
 </beans>
