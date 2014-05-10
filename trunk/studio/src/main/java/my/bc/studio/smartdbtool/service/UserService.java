@@ -17,7 +17,7 @@ import my.bc.studio.model.User;
 import my.bc.studio.smartdbtool.searchcrieria.UserSearchCriteria;
 
 @Service
-public class UserService implements IUserService
+public class UserService extends GenericJpaDaoService implements IUserService
 {
   private Session hibernateSession;
   
