@@ -8,7 +8,7 @@ public class SpringBeanConfigurator
 {
   public static final SpringBeanConfigurator DEFAULT = new SpringBeanConfigurator();
   
-  private static final String CONFIG_PATH = "classpath*:my/bc/studio-*.xml";
+  private static final String CONFIG_PATH = "classpath*:my/bc/studio/studio-*.xml";
   private ApplicationContext applicationContext;
   
   private SpringBeanConfigurator(){}

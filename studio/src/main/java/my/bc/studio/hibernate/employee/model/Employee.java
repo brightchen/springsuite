@@ -29,7 +29,7 @@ public class Employee
   @JoinTable(name="employee_role", 
               joinColumns={@JoinColumn(name="employee_id", referencedColumnName="id")}, 
               inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
-  private Set<Role> employeeRoles;
+  private Set<EmployeeRole> employeeRoles;
 
   @ManyToOne
   @JoinColumn(name="deparment_id", nullable=true, updatable=true)
