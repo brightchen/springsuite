@@ -64,17 +64,17 @@
       <artifactId>spring-security-web</artifactId>
     </dependency>
 
-      <!--============================= AspectJ begin ============================= -->
-      <dependency>
-        <groupId>aspectj</groupId>
-        <artifactId>aspectjrt</artifactId>
-      </dependency>
+    <!--============================= AspectJ begin ============================= -->
+    <dependency>
+      <groupId>aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>aspectj</groupId>
-        <artifactId>aspectjweaver</artifactId>
-      </dependency>
-      <!--============================= AspectJ end ============================= -->
+    <dependency>
+      <groupId>aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+    </dependency>
+    <!--============================= AspectJ end ============================= -->
 
     <dependency>
       <groupId>log4j</groupId>
