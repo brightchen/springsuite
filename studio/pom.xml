@@ -99,7 +99,6 @@
     <dependency>
       <groupId>org.apache.derby</groupId>
       <artifactId>derby</artifactId>
-      <version>10.10.2.0</version>
     </dependency>
             
     <!--============================= AspectJ begin ============================= -->
@@ -113,7 +112,11 @@
       <artifactId>aspectjweaver</artifactId>
     </dependency>
     <!--============================= AspectJ end ============================= -->
-                
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>                
   </dependencies>
   
 </project>
