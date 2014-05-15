@@ -7,7 +7,7 @@ import my.bc.studio.model.Role;
 import my.bc.studio.model.User;
 import my.bc.studio.smartdbtool.searchcrieria.UserSearchCriteria;
 
-public interface IUserService
+public interface IUserService extends IGenericDaoService
 {
   public User findUserByName( String name );
   public Account findAccountByName( String accountId );
