@@ -16,7 +16,6 @@
 
     <aop:aspectj-autoproxy/>
   
-    <tx:annotation-driven/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
@@ -26,6 +25,7 @@
       <property name="url" value="${jdbc.url}"/>
       <property name="username" value="${jdbc.username}"/>
       <property name="password" value="${jdbc.password}"/>  
+      
       <property name="maxActive" value="-1"/>   <!--  no limite on number connections to the local repository -->
       <property name="minIdle" value="0"/>      <!--  remove all unused connection  -->
       <property name="validationQuery" value="select 1" />
@@ -37,7 +37,7 @@
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <!-- <property name="packagesToScan" value="my.bc.studio.model" />  -->
     <property name="dataSource" ref="dataSource"/>
-    <property name="persistenceUnitName" value="resourceLocal"/>
+    <property name="persistenceUnitName" value="studio-resourceLocal"/>
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="${hibernate.show_sql}" />
@@ -75,5 +75,8 @@
   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactory"/>
   </bean>
+
+  <tx:annotation-driven/>
+   
 
 </beans>
