@@ -15,7 +15,7 @@
           http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
 
 
-	<bean id="dataSource" class="my.bc.persistent.BasicDataSource"  destroy-method="close">
+	<bean id="dataSource" class="my.bc.persistent.BcBasicDataSource"  destroy-method="close">
       <property name="driverClassName" value="${jdbc.driverClassName}"/>
 	  <property name="url" value="${jdbc.url}"/>
 	  <property name="username" value="${jdbc.username}"/>

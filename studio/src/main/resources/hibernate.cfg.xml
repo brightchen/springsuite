@@ -23,7 +23,7 @@
     
     <!-- <mapping package="my.bc.studio.hibernate.employee.model" /> -->
     <mapping class="my.bc.studio.hibernate.employee.model.Employee" />
-    <mapping class="my.bc.studio.hibernate.employee.model.Role" />
+    <mapping class="my.bc.studio.hibernate.employee.model.EmployeeRole" />
     <mapping class="my.bc.studio.hibernate.employee.model.Department" />
 
   </session-factory>

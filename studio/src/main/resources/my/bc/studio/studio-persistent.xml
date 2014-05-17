@@ -1,82 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<beans xmlns="http://www.springframework.org/schema/beans" 
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop" 
-       xmlns:context="http://www.springframework.org/schema/context" 
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans 
-          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-          http://www.springframework.org/schema/aop 
-          http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
-          http://www.springframework.org/schema/tx 
-          http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
-          http://www.springframework.org/schema/context
-          http://www.springframework.org/schema/context/spring-context-3.2.xsd" >
-
-    <aop:aspectj-autoproxy/>
-  
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
-
-    <!-- dataSource -->
-    <bean id="dataSource" class="my.bc.persistent.BasicDataSource"  destroy-method="close">
-      <property name="driverClassName" value="${jdbc.driverClassName}"/>
-      <property name="url" value="${jdbc.url}"/>
-      <property name="username" value="${jdbc.username}"/>
-      <property name="password" value="${jdbc.password}"/>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.2.xsd
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+ 
+  <!-- windows authentication: 
+    - url: "jdbc:sqlserver://<host>:<port>;databasename=<databasename>;integratedSecurity=true";
+    - driver: "com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
+  <!-- Database -->
+  <!-- source data source -->
+  <bean id="dataSource" class="my.bc.persistent.BcBasicDataSource" destroy-method="close">
+    <property name="driverClassName" value= "net.sourceforge.jtds.jdbc.Driver"/>  <!-- "${jdbc.driverClassName}"  -->
+    <property name="url" value="${jdbc.url}" />
+    <property name="username" value="${jdbc.username}" />
+    <property name="password" value="${jdbc.password}" />
+    <property name="validationQuery" value="select 1" />
+    <property name="minIdle" value="0" />
+    <property name="maxIdle" value="0" />
+    <property name="maxActive" value="1" />
       
-      <property name="maxActive" value="-1"/>   <!--  no limite on number connections to the local repository -->
-      <property name="minIdle" value="0"/>      <!--  remove all unused connection  -->
-      <property name="validationQuery" value="select 1" />
-      <property name="minEvictableIdleTimeMillis" value="300000"/> <!--  5 minutes -->  
-      <property name="timeBetweenEvictionRunsMillis" value="300000"/> <!--  5 minutes -->  
-    </bean>
-    
+    <property name="testWhileIdle" value="false" />   <!-- keep on valid objects will protect connection to be closed  -->
+  </bean>
 
+  
+  <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-    <!-- <property name="packagesToScan" value="my.bc.studio.model" />  -->
+    <property name="packagesToScan" value="my.bc.studio.model" />
     <property name="dataSource" ref="dataSource"/>
     <property name="persistenceUnitName" value="studio-resourceLocal"/>
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="${hibernate.show_sql}" />
-        <property name="generateDdl" value="true" />
+        <property name="generateDdl" value="false" />
         <property name="databasePlatform" value="${hibernate.dialect}" />
       </bean>
     </property>
   </bean>
-  
-  <!--     
-  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-      <property name="dataSource" ref="dataSource"/>
-      <property name="persistenceUnitName" value="resourceLocal"/>
-      
-      <property name="jpaDialect">
-        <bean class="my.bc.persistent.PersistentJpaDialet">
-          <property name="flushMode" value="COMMIT"/>
-        </bean>
-      </property>
-        
-      <property name="jpaVendorAdapter">
-        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-      </property>
-        
-      <property name="jpaPropertyMap">
-        <map>
-          <entry key="hibernate.dialect" value="${hibernate.dialect}" />
-          <entry key="hibernate.hbm2ddl.auto" value="${hibernate.hbm2ddl.auto}" />
-          <entry key="hibernate.show_sql" value="${hibernate.show_sql}" />     
-        </map>
-      </property>
+
+  <bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+    <!-- 
+    <property name="persistenceXmlLocations">
+     <list>
+      <value>classpath*:META-INF/persistence.xml</value>
+      <value>classpath*:META-INF/persistence2.xml</value>
+     </list>
+    </property>
+    -->
+    <property name="dataSources">
+      <map>
+        <entry key="dataSource" value-ref="dataSource" />
+      </map>
+    </property>
+    <property name="defaultDataSource" ref="dataSource" />
   </bean>
-  -->
-   
+  
+  <!-- only read data from source data source, so no need transaction manager for source -->
   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactory"/>
   </bean>
+  
+  <tx:annotation-driven transaction-manager="transactionManager" />
+  
+  <!--   
+  <aop:aspectj-autoproxy />
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
+     <tx:attributes>
+        <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="create*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="del*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="remove*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="accept*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="reject*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="exec*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="sync*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="gen*" propagation="REQUIRED" rollback-for="Exception" />
+        <tx:method name="*" read-only="true" />
+     </tx:attributes>
+  </tx:advice>
 
-  <tx:annotation-driven/>
-   
-
+  <aop:config>
+      <aop:pointcut id="buzPointcut" expression="execution(* com.fortinet..service.*.*(..))" />
+      <aop:advisor advice-ref="txAdvice" pointcut-ref="buzPointcut" />
+  </aop:config>
+  -->
+ 
 </beans>
