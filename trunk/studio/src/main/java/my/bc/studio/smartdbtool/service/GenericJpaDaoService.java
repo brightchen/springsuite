@@ -70,13 +70,13 @@ public class GenericJpaDaoService implements IGenericDaoService
    * @see cg.usermanagement.api.IGenericDaoService#saveEntity(cg.model.api.IEntity)
    */
   @Override
-  @Transactional
+  @Transactional( readOnly = false )
   public < T extends IEntity > T saveEntity( T entity )
   {
     return saveEntityInternal( entity );
   }
 
-  public < T extends IEntity > T saveEntityInternal( T entity )
+  protected < T extends IEntity > T saveEntityInternal( T entity )
   {
     entity = getEntityManager().merge( entity );
     getEntityManager().persist( entity );
@@ -84,13 +84,13 @@ public class GenericJpaDaoService implements IGenericDaoService
   }
 
   @Override
-  @Transactional
+  @Transactional( readOnly = false )
   public <T extends IEntity > void removeEntityById( Class< T > entityClass, Long id )
   {
     removeEntityByIdInternal( entityClass, id );
   }
   
-  public <T extends IEntity > void removeEntityByIdInternal( Class< T > entityClass, Long id )
+  protected <T extends IEntity > void removeEntityByIdInternal( Class< T > entityClass, Long id )
   {
     T entity = findEntityById( entityClass, id );
     if( entity == null )
