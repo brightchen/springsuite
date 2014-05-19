@@ -1,3 +1,5 @@
+#The org.apache.commons.dbcp.BasicDataSource will use properties from this file.
+#and getConnection(String user, String pass) will be invoked which is not supported.
 hibernate.connection.driver_class=org.apache.derby.jdbc.EmbeddedDriver
 hibernate.connection.url=jdbc:derby:${basedir}/target/general-derby;create=true
 hibernate.connection.username=sa
