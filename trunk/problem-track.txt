@@ -1,0 +1,8 @@
+  - Problem: when run my.bc.studio.smartdbtool.test.Tester1, system keep on throwing exception( "Unsupported by BasicDataSource" ) when trying create JPA.
+    tracking into the BasicDataSource and found the method "getConnection(String user, String pass)" instead of "getConnection()" was called, 
+    and in fact "getConnection(String user, String pass)" is not supported by BasicDataSource ( see BasicDataSource api ), So BasicDataSource will throw
+    UnsupportedException().
+  - Reason: there has a file "hibernate.properties" which was under directory "studio/src/main/resources", and in fact the properties in this file was used.
+    rename this file into "hibernate.properties.bak" and problem solved.
+  - Further dig: why the properties of "hibernate.properties" have higher priority than "studo-persistent.properties" which used 
+    by spring "PropertyPlaceholderConfigurer"
