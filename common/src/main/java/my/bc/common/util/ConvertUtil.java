@@ -3,6 +3,7 @@ package my.bc.common.util;
 public class ConvertUtil
 {
   //we put different classes into this array, so, it can be type safe for compiler
+  @SuppressWarnings( "rawtypes")
   public static Class[] NumberConvertRoute = { (Class)Byte.class, (Class)Short.class, (Class)Integer.class, (Class)Long.class, (Class)Float.class, (Class)Double.class  }; 
   
   /**
@@ -11,6 +12,7 @@ public class ConvertUtil
    * @param dest: the class convert to
    * @return True if can be converted
    */
+  @SuppressWarnings( { "rawtypes", "unchecked" })
   public static boolean isConvertable( Class sourceClass, Class destClass )
   {
     if( destClass.equals( sourceClass ) )

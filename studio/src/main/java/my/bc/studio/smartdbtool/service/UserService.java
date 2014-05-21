@@ -26,6 +26,7 @@ public class UserService extends GenericJpaDaoService implements IUserService
     this.hibernateSession = hibernateSession;
   }
   
+  @SuppressWarnings( "unchecked")
   protected <T> T findByName( Class<T> persistentClass, String name )
   {
     Criteria criteria = hibernateSession.createCriteria( persistentClass ).add( Restrictions.eq( "name", name ) );

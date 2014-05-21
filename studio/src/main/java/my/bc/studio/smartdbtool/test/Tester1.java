@@ -22,7 +22,8 @@ public class Tester1
     Tester1 tester = appContext.getBean( Tester1.class );
     
     tester.prepareData();
-    tester.queryInsideEntity();
+    List<User> users = tester.queryInsideEntity();
+    tester.cleanupData( users );
     
     SpringBeanConfigurator.DEFAULT.closeApplicationContext();
   }
@@ -45,7 +46,7 @@ public class Tester1
     System.out.println( "----------------prepareData() done-------------" );
   }
   
-  public void queryInsideEntity()
+  public List<User> queryInsideEntity()
   {
     System.out.println( "----------------queryInsideEntity() started-------------" );
     UserSearchCriteria searchCriteria = new UserSearchCriteria();
@@ -58,5 +59,17 @@ public class Tester1
       System.out.println( user.getFirstName() + " " + user.getLastName() );
     }
     System.out.println( "----------------queryInsideEntity() done-------------" );
+    
+    return users;
+  }
+  
+  public void cleanupData( List<User> users )
+  {
+    if( users == null )
+      return;
+    for( User user : users )
+    {
+      userService.removeEntityById( User.class, user.getId() );
+    }
   }
 }

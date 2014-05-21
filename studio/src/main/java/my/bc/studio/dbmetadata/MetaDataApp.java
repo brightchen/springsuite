@@ -9,7 +9,7 @@ public class MetaDataApp
   private final String connection_username = "sa";
   private final String connection_password = "";
   private final String connection_driver_class = "org.apache.derby.jdbc.EmbeddedDriver";
-  private final String dialect = "org.hibernate.dialect.DerbyDialect";
+  //private final String dialect = "org.hibernate.dialect.DerbyDialect";
 
   protected JdbcTemplate jdbcTemplate;
 

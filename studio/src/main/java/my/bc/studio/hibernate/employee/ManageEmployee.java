@@ -62,14 +62,15 @@ public class ManageEmployee
     // me.listEmployees();
   }
 
+  @SuppressWarnings( "unchecked")
   public void showClassMappings( Configuration configuration )
   {
-    for ( Iterator classIter = configuration.getClassMappings(); classIter.hasNext(); )
+    for ( Iterator<PersistentClass> classIter = configuration.getClassMappings(); classIter.hasNext(); )
     {
-      PersistentClass persistentClass = (PersistentClass) classIter.next();
-      for ( Iterator propIter = persistentClass.getPropertyIterator(); propIter.hasNext(); )
+      PersistentClass persistentClass = classIter.next();
+      for ( Iterator<Property> propIter = persistentClass.getPropertyIterator(); propIter.hasNext(); )
       {
-        Property property = (Property) propIter.next();
+        Property property = propIter.next();
         String className = persistentClass.getClassName();
         String propertyName = property.getName();
         outputInfo( "className="+className + "; propertyName="+propertyName );
@@ -102,14 +103,15 @@ public class ManageEmployee
    * employee_id,  referenced to table employee
    * @param configuration
    */
+  @SuppressWarnings( "unchecked")
   public void showTableMappings( Configuration configuration )
   {
-    for ( Iterator tableIter = configuration.getTableMappings(); tableIter.hasNext(); )
+    for ( Iterator<Table> tableIter = configuration.getTableMappings(); tableIter.hasNext(); )
     {
-      Table table = (Table)tableIter.next();
-      for( Iterator foreignKeyIter = table.getForeignKeyIterator(); foreignKeyIter.hasNext(); )
+      Table table = tableIter.next();
+      for( Iterator<ForeignKey> foreignKeyIter = table.getForeignKeyIterator(); foreignKeyIter.hasNext(); )
       {
-        ForeignKey foreignKey = (ForeignKey)foreignKeyIter.next();
+        ForeignKey foreignKey = foreignKeyIter.next();
         
         List<Column> columns = foreignKey.getColumns();
         Table referencedTable = foreignKey.getReferencedTable();
@@ -155,6 +157,7 @@ public class ManageEmployee
   }
 
   /* Method to READ all the employees */
+  @SuppressWarnings( "unchecked")
   public void listEmployees()
   {
     Session session = factory.openSession();
@@ -162,10 +165,9 @@ public class ManageEmployee
     try
     {
       tx = session.beginTransaction();
-      List employees = session.createQuery( "FROM Employee" ).list();
-      for ( Iterator iterator = employees.iterator(); iterator.hasNext(); )
+      List< Employee > employees = session.createQuery( "FROM Employee" ).list();
+      for ( Employee employee : employees )
       {
-        Employee employee = (Employee) iterator.next();
         System.out.print( "First Name: " + employee.getFirstName() );
         System.out.print( "  Last Name: " + employee.getLastName() );
         System.out.println( "  Salary: " + employee.getSalary() );
