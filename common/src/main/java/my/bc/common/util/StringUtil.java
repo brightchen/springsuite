@@ -26,4 +26,25 @@ public class StringUtil
     }
     return obj.toString();
   }
+  
+  public static int hashCode( String str )
+  {
+    int length = str.length();
+    int hashCode = 0;
+    for( int index = 0; index < length; ++index )
+    {
+      char c = str.charAt( index );
+      int lastHashCode = hashCode;
+      hashCode <<= 5;
+      hashCode -= ( lastHashCode + c );
+    }
+    return hashCode;
+  }
+  
+  public static boolean equalsIgnoreCase( String s1, String s2 )
+  {
+    if( s1 == null )
+      return ( s2 == null );
+    return s1.equalsIgnoreCase( s2 );
+  }
 }

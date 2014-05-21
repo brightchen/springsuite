@@ -1,5 +1,7 @@
 package my.bc.studio.smartdbtool.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -98,4 +100,9 @@ public class GenericJpaDaoService implements IGenericDaoService
     getEntityManager().remove( entity );
   }
 
+  @SuppressWarnings( "unchecked")
+  public < T extends IEntity > List<T> getEntities( Class<T> entityClass )
+  {
+    return getEntityManager().createQuery( "from " + entityClass.getName()  ).getResultList();
+  }
 }
