@@ -24,16 +24,16 @@ public class TestCase1
   @Autowired( required = true )
   private IUserService userService;
   
+  private List<User> users;
+  
   @BeforeClass
   public static void classSetUp() 
   {
-//    applicationContext = SpringBeanConfigurator.DEFAULT.getApplicationContext();
   }
 
   @AfterClass
   public static void classTearDown() 
   {
-//    SpringBeanConfigurator.DEFAULT.closeApplicationContext();
   }
 
   @Before
@@ -58,22 +58,35 @@ public class TestCase1
   @After
   public void cleanData()
   {
-    
+    if( users == null )
+      return;
+    for( User user : users )
+    {
+      userService.removeEntityById( User.class, user.getId() );
+    }
+
   }
   
   @Test
   public void queryInsideEntity()
   {
-    System.out.println( "----------------queryInsideEntity() started-------------" );
-    UserSearchCriteria searchCriteria = new UserSearchCriteria();
-    searchCriteria.setFirstName( "firstname" );
-    searchCriteria.setLastName( "lastname" );
-    List<User> users = userService.findUsers( searchCriteria );
-    System.out.println( "got users: " + users.size() );
-    for( User user : users )
+    try
     {
-      System.out.println( user.getFirstName() + " " + user.getLastName() );
+      System.out.println( "----------------queryInsideEntity() started-------------" );
+      UserSearchCriteria searchCriteria = new UserSearchCriteria();
+      searchCriteria.setFirstName( "firstname" );
+      searchCriteria.setLastName( "lastname" );
+      users = userService.findUsers( searchCriteria );
+      System.out.println( "got users: " + users.size() );
+      for( User user : users )
+      {
+        System.out.println( user.getFirstName() + " " + user.getLastName() );
+      }
+      System.out.println( "----------------queryInsideEntity() done-------------" );
     }
-    System.out.println( "----------------queryInsideEntity() done-------------" );
+    catch( Exception e )
+    {
+      e.printStackTrace();
+    }
   }
 }

@@ -261,7 +261,7 @@ public class ReflectionUtil
     return allFields;
   }
 
-  @SuppressWarnings( "unchecked")
+  @SuppressWarnings( { "unchecked", "rawtypes" })
   public static Field getField( Class<?> clazz, String propertyName, Class<?> type )
   {
     return getField( (Class)clazz, (Class)clazz, propertyName, type );
