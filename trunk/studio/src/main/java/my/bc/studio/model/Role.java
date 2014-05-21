@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import my.bc.common.util.StringUtil;
 import my.bc.studio.model.INamedEntity;
 
 /*
@@ -49,4 +50,26 @@ public class Role implements INamedEntity
   {
     this.name = name;
   }
+  
+  @Override 
+  public int hashCode()
+  {
+    return StringUtil.hashCode( name );
+  }
+  
+  @Override
+  public boolean equals(Object obj)
+  {
+    if( obj == null )
+      return false;
+    if( ! (obj instanceof User ) )
+      return false;
+    User other = ( User )obj;
+    if( other.hashCode() != hashCode() )
+      return false;
+    
+    return StringUtil.equalsIgnoreCase(  name, other.getName() );
+  }
+  
+  
 }

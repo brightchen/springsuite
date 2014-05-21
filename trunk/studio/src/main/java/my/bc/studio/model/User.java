@@ -1,10 +1,18 @@
 package my.bc.studio.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -48,6 +56,11 @@ public class User implements INamedEntity
 
   @Column( name="PHONE", length = 20 )
   private String phone;
+
+  @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+  @JoinTable(joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
+  //@ForeignKey(name = "FKUserRolesOwner", inverseName = "FKUserRoles")
+  private Set<Role> roles = new HashSet<Role>();
 
   @Override
   public Long getId()
@@ -140,5 +153,19 @@ public class User implements INamedEntity
     this.status = status;
   }
   
+  public Set< Role > getRoles()
+  {
+    return roles;
+  }
+  public void setRoles( Set< Role > roles )
+  {
+    this.roles = roles;
+  }
+  public void addRole( Role role )
+  {
+    if( roles == null )
+      roles = new HashSet<Role>();
+    roles.add( role );
+  }
   
 }
