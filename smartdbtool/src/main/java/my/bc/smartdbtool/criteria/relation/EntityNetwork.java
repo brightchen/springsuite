@@ -10,7 +10,8 @@ import my.bc.common.util.CollectionUtil;
 import my.bc.common.util.ObjectUtil;
 
 /*
- * EntityNetwork keeps the relationship among beans
+ * EntityNetwork keeps the relationship among Entities.
+ * Each entity is a node of the network. The entities which connected to each other belongs to the same network.
  * it can be partial of WholeEntityNetwork
  */
 @SuppressWarnings( "rawtypes" )
@@ -86,8 +87,9 @@ public class EntityNetwork extends EntityConnectorAbstractResolver
    * add the entity which directly connected to this network into it.
    * this method will check if the entity directly connected to the network, 
    * do nothing and return false if entity doesn't directly connected to the network
+   * else, add this entity into network and returns true.
    * 
-   * @param entity the entity going to add to this EntityNetwork 
+   * @param entity the entity going to be added to this EntityNetwork 
    * @param containerNetwork the network which contains entity and its connectors, we can get this entity's connectors from containerNetwork
    * @return return true if add entity successful
    */
@@ -359,7 +361,10 @@ public class EntityNetwork extends EntityConnectorAbstractResolver
   }
   
   /*
-   * this method resolve the entities by put the entities of resolvingEntities which directly connected to the resolvedNetwork
+   * this method resolve the entity network by putting the entities of resolvingEntities which directly connected to the resolvedNetwork
+   * for example, entity A connect to entity B and entity C, and entity C connect to entity D. 
+   * If A is in the network, add B, C and D into network too.
+   * 
    * return whether the entitiesToResolve being completely resolved
    */
   protected boolean resolveDirectConnectedEntities( EntityNetwork resolvedNetwork, Set< Class > resolvingEntities, IEntityConnectorsResolver connectorsResolver )
@@ -388,7 +393,8 @@ public class EntityNetwork extends EntityConnectorAbstractResolver
   }
   
   /*
-   * in this step, all the entities of entitiesToResolve are not directly connected to resolvedNetwork
+   * in this step, all the entities of resolvingEntities are not directly connected to resolvedNetwork
+   * for example: ++++
    * we should try to find a bridge entity from this EntityNetwork to connect both resolvedNetwork and entitiesToResolve
    */
   protected boolean resolveBridgeConnectedEntities( EntityNetwork resolvedNetwork, Set< Class > resolvingEntities, IEntityConnectorsResolver connectorsResolver )

@@ -8,8 +8,11 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import my.bc.smartdbtool.criteria.IQueryCriteria;
+import my.bc.smartdbtool.criteria.SmartQueryBuilder;
 import my.bc.studio.model.IEntity;
 import my.bc.studio.model.INamedEntity;
+import my.bc.studio.model.User;
 
 
 public class GenericJpaDaoService implements IGenericDaoService
@@ -104,5 +107,12 @@ public class GenericJpaDaoService implements IGenericDaoService
   public < T extends IEntity > List<T> getEntities( Class<T> entityClass )
   {
     return getEntityManager().createQuery( "from " + entityClass.getName()  ).getResultList();
+  }
+  
+  @SuppressWarnings( "unchecked")
+  public <T extends IEntity> List<T> findEntities( Class<T> entityClass, IQueryCriteria queryCriteria )
+  {
+    String query = SmartQueryBuilder.defaultInstance().buildSearchHsql( entityClass, queryCriteria );
+    return getEntityManager().createQuery( query  ).getResultList();
   }
 }

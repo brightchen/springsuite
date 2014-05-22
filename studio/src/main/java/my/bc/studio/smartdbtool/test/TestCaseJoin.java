@@ -2,8 +2,13 @@ package my.bc.studio.smartdbtool.test;
 
 import java.util.List;
 
+
+
+import my.bc.common.classproperty.ClassProperty;
+import my.bc.smartdbtool.criteria.Operator;
+import my.bc.smartdbtool.criteria.QueryCriteria;
+import my.bc.studio.model.Role;
 import my.bc.studio.model.User;
-import my.bc.studio.smartdbtool.searchcrieria.UserSearchCriteria;
 import my.bc.studio.smartdbtool.service.IUserService;
 
 import org.junit.After;
@@ -99,13 +104,9 @@ public class TestCaseJoin
     try
     {
       System.out.println( "----------------queryInsideEntity() started-------------" );
-      UserSearchCriteria searchCriteria = new UserSearchCriteria();
+      QueryCriteria queryCriteria = new QueryCriteria( new ClassProperty( "name", Role.class, null ), Operator.Equal, "Admin" );
       
-      //TODO: search by role
-      searchCriteria.setFirstName( "firstname" );
-      searchCriteria.setLastName( "lastname" );
-      users = userService.findUsers( searchCriteria );
-      System.out.println( "got users: " + users.size() );
+      List<User> users = userService.findEntities( User.class, queryCriteria );
       for( User user : users )
       {
         System.out.println( user.getFirstName() + " " + user.getLastName() );

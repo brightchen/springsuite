@@ -37,13 +37,17 @@ public class ScopeEnlargeManager
    * @param resolvedNetwork
    * @param resolvingEntities
    * @param connectorsResolver
-   * @return the entity which added to enlarge the scope
+   * @return the entity which just added to the network to enlarge the scope
    */
   public Class enlargeScope( EntityNetwork resolvedNetwork, Set< Class > resolvingEntities, IEntityConnectorsResolver connectorsResolver )
   {
+    //all entities of the connectors
     Set< Class > entities = connectorsResolver.getAllEntities();
+    
+    //remove all the entities which already added into the network
     if( resolvedNetwork != null )
       entities.removeAll( resolvedNetwork.getEntities() );
+    
     if( resolvingEntities != null && !resolvingEntities.isEmpty() )
       entities.removeAll( resolvingEntities );
     
