@@ -1,5 +1,6 @@
 package my.bc.common.classproperty;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -11,12 +12,22 @@ import my.bc.common.util.ObjectUtil;
 @SuppressWarnings( "rawtypes" )
 public class ClassProperty
 {
-  private String name;
-  private Class<?> declaringClass;
-  private Class<?> propertyRawType;    //A for A< String, Integer >
-  private Type[] typeArguments;     //[String, Integer] for A< String, Integer >
+  private String name;                //the name of the property
+  private Class<?> declaringClass;    //which class this property belongs to
+  private Class<?> propertyRawType;   //A for A< String, Integer >
+  private Type[] typeArguments;       //[String, Integer] for A< String, Integer >
   
   public ClassProperty(){}
+  
+  /**
+   * create ClassProperty from Class Field
+   * @param field
+   */
+  public ClassProperty( Field field )
+  {
+    //can't can Generic Property Type information at runtime
+    this( field.getName(), field.getDeclaringClass(), null );
+  }
   
   public ClassProperty( String name, Class declaringClass, Type genericPropertyType )
   {
