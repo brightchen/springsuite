@@ -19,7 +19,9 @@ public class WholeEntityNetwork extends EntityNetwork
   /**
    * build a network which covers all the entities.
    * the built network will be added into this manager
-   * the buildEntityNetwork of WholeEntityNetwork is greedy
+   * the buildEntityNetwork of WholeEntityNetwork is greedy. 
+   * Namely, any entity which connected to the entity in the network will be added to the network too.
+   *  
    * @param entities
    * @return: the built network 
    */
@@ -34,7 +36,7 @@ public class WholeEntityNetwork extends EntityNetwork
     {
       networkChanged = false;
       
-      //find the direct connected entities and add them into resolvedNetwork
+      //find the direct connected entities from entitiesCopy and add them into resolvedNetwork
       if( entitiesCopy != null && !entitiesCopy.isEmpty() )
       {
         int entitiesSize = entitiesCopy.size();

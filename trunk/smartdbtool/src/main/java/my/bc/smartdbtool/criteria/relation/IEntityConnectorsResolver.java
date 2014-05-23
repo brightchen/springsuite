@@ -3,6 +3,13 @@ package my.bc.smartdbtool.criteria.relation;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * the connectors in fact keeps all the entities.
+ * these entities may form one or several network.
+ * 
+ * @author brightchen
+ *
+ */
 @SuppressWarnings( "rawtypes" )
 public interface IEntityConnectorsResolver
 {

@@ -102,11 +102,10 @@ public class SmartQueryBuilder
     return buildRelationClause( aliasEntityMap );
   }
   
-  
-  /*
-   * the relationship between the entity classes
-   * parameter: aliasBeanMap the map ( alias ==> entity class )
-   * for example role.account = account.id and account.user = user.id 
+  /**
+   * build the relationship of the entity classes
+   * @param aliasEntityMap the map ( alias ==> entity class ) of entities of the query result
+   * @return the relationship clause string, for example "role.account = account.id and account.user = user.id"
    */
   public String buildRelationClause( Map< String, Class > aliasEntityMap )
   {
@@ -114,7 +113,9 @@ public class SmartQueryBuilder
     if( aliasEntityMap == null || aliasEntityMap.size() == 0 || aliasEntityMap.size() == 1 )
       return "";
     
+    //resolve the network, and then transform the network into relationship clause.
     EntityNetwork network = EntityNetworkManager.defaultInstance().resolveNetwork( aliasEntityMap );
+    
     Set< EntityConnector > connectors = network.getAllConnectors();
     if( connectors == null || connectors.isEmpty() )
       return "";

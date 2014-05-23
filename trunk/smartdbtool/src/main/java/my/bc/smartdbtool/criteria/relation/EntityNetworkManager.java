@@ -170,6 +170,7 @@ public class EntityNetworkManager
   public RefinedEntityNetwork resolveNetwork( Map< String, Class > aliasEntityMap )
   {
     //we haven't supported user specified alias yet
+    //just delegate to resolveNetwork( Set< Class > entities )
     
     //get all entity set and delegate to resolveNetwork( Set< Class > entities )
     Set< Class > entities = new HashSet< Class >();
@@ -189,6 +190,7 @@ public class EntityNetworkManager
   {
     //search the cache
     EntityNetwork[] networks = lookupEntityNetworks( entities );
+    
     EntityNetwork containerNetwork = null;
     if( networks == null || networks.length == 0 )
     {
@@ -198,12 +200,14 @@ public class EntityNetworkManager
     }
     else
     {
+      //find the proper network, prefer RefinedEntityNetwork
       for( EntityNetwork network : networks )
       {
         if( network instanceof RefinedEntityNetwork )
           return (RefinedEntityNetwork)network;   //found the network which meets the criteria
       }
       
+      //can't find the RefinedEntityNetwork, use the first network
       containerNetwork = networks[0];
     }
     

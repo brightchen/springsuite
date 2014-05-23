@@ -91,7 +91,7 @@ public class EntityNetwork extends EntityConnectorAbstractResolver
    * 
    * @param entity the entity going to be added to this EntityNetwork 
    * @param containerNetwork the network which contains entity and its connectors, we can get this entity's connectors from containerNetwork
-   * @return return true if add entity successful
+   * @return true if add entity successful
    */
   protected boolean addDirectlyConnectedEntity( Class entity, IEntityConnectorsResolver connectorsResolver )
   {
@@ -362,8 +362,11 @@ public class EntityNetwork extends EntityConnectorAbstractResolver
   
   /*
    * this method resolve the entity network by putting the entities of resolvingEntities which directly connected to the resolvedNetwork
+   * 
    * for example, entity A connect to entity B and entity C, and entity C connect to entity D. 
-   * If A is in the network, add B, C and D into network too.
+   * If A is in the network, and ( B,C ) is the set of resolvingEntities; then add B and C into the resolvedNetwork;
+   * But D will not added to the resolvedNetwork by this method.
+   * As we want to put resolvingEntities on higher priority.
    * 
    * return whether the entitiesToResolve being completely resolved
    */
