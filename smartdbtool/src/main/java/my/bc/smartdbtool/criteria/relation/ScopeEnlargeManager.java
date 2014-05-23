@@ -34,9 +34,12 @@ public class ScopeEnlargeManager
   
   /**
    * enlarge the scope ( resolvedNetwork or resolvingEntities )
-   * @param resolvedNetwork
-   * @param resolvingEntities
-   * @param connectorsResolver
+   * This method should be called by buildEntityNetwork.
+   * assume: there should no any entity in resolvingEntities can directly connect to resolvedNetwork
+   * 
+   * @param resolvedNetwork the network which entities going to be added to
+   * @param resolvingEntities the entities are being resolved
+   * @param connectorsResolver can get the connectors 
    * @return the entity which just added to the network to enlarge the scope
    */
   public Class enlargeScope( EntityNetwork resolvedNetwork, Set< Class > resolvingEntities, IEntityConnectorsResolver connectorsResolver )
@@ -68,6 +71,7 @@ public class ScopeEnlargeManager
     }
       
     //second, pick one which can directly add to any of the entities of resolvingEntities
+    //this way, we in fact enlarge the resolvingEntities instead of network
     if( resolvingEntities != null )
     {
       for( Class entity : entities )

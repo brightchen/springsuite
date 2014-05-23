@@ -6,3 +6,10 @@
     rename this file into "hibernate.properties.bak" and problem solved.
   - Further dig: why the properties of "hibernate.properties" have higher priority than "studo-persistent.properties" which used 
     by spring "PropertyPlaceholderConfigurer"
+    
+
+  - problem: error for "persistence.xml" says "The persistence.xml file does not have supported content for this JPA platform" after changed the schema from "1.0" to "2.0".
+  - reason: The cause was the JPA Facet was set to JPA Version 1.0, however my persistence.xml file was specifying JPA Version 2. 
+    So I changed the JPA Facet to version 2.0 and the problem went away. 
+    (Project --> Properties --> Project Facets --> "Configuration" drop down --> set this to "Minimal JPA 2.0 configuration" 
+    clean the project for recompile after done the change.

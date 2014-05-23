@@ -20,7 +20,7 @@ import my.bc.common.classproperty.ClassPropertyExt;
 import my.bc.common.classproperty.ClassPropertyUtil;
 
 /**
- * resolve the entity connectors by parsing the annotations
+ * resolve the entity connectors by parsing the entity annotations
  * @author bchen
  * 
  */
