@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import my.bc.common.classproperty.ClassProperty;
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnector;
 
 @SuppressWarnings( "rawtypes")
 public class EntityRelationUtil

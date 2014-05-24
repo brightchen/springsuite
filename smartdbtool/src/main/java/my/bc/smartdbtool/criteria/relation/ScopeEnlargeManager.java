@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import my.bc.common.util.CollectionUtil;
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnector;
+import my.bc.smartdbtool.criteria.relation.connection.IEntityConnectorsResolver;
 
 /**
  * this class manages the scope enlarge for my.bc.query.relation.EntityNetwork.resolveNetworkByEnlargeScope(EntityNetwork, Set<Class>, IEntityConnectorsResolver)

@@ -1,4 +1,4 @@
-package my.bc.smartdbtool.criteria.relation;
+package my.bc.smartdbtool.criteria.relation.connection.pa;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -18,10 +18,16 @@ import javax.persistence.OneToOne;
 import my.bc.common.classproperty.ClassProperty;
 import my.bc.common.classproperty.ClassPropertyExt;
 import my.bc.common.classproperty.ClassPropertyUtil;
+import my.bc.smartdbtool.criteria.relation.EntityLookup;
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnector;
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnectorAbstractResolver;
 
 /**
- * resolve the entity connectors by parsing the entity annotations
- * @author bchen
+ * resolve the entity connectors by parsing the entity persistent annotations
+ * this implementation has a lot of limitations, for example, the relation among entities must be represented by persistent annotations
+ * and there are some problem such as implicit entities which was introduced by manyToMany mapping
+ * 
+ * @author brightchen
  * 
  */
 @SuppressWarnings( "rawtypes" )
@@ -81,8 +87,6 @@ public class EntityConnectorsAnnotationResolver extends EntityConnectorAbstractR
     {
       ClassPropertyExt propertyExt = ClassPropertyUtil.toClassPropertyExt( property );
       
-      //
-      //TODO: handle the field first, we also need to handle getter and setter 
       Field field = propertyExt.getField();
       EntityConnector entityConnector = getEntityConnectorFrom( propertyExt, field );
       

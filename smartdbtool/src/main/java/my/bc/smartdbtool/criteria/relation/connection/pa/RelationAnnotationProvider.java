@@ -1,4 +1,4 @@
-package my.bc.smartdbtool.criteria.relation;
+package my.bc.smartdbtool.criteria.relation.connection.pa;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;

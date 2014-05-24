@@ -3,6 +3,8 @@ package my.bc.smartdbtool.criteria.relation;
 import java.util.ArrayList;
 import java.util.List;
 
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnector;
+
 public class EntityRelationship
 {
   // beanRoute is a route from the start bean to the end bean
