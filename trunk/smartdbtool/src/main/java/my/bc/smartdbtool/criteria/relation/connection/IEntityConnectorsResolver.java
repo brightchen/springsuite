@@ -1,4 +1,4 @@
-package my.bc.smartdbtool.criteria.relation;
+package my.bc.smartdbtool.criteria.relation.connection;
 
 import java.util.Map;
 import java.util.Set;

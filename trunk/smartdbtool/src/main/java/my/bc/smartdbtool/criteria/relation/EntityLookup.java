@@ -9,6 +9,7 @@ import org.reflections.Reflections;
 
 import my.bc.common.reflection.ReflectionsBuilder;
 import my.bc.common.util.CollectionUtil;
+import my.bc.smartdbtool.criteria.relation.connection.pa.EntityConnectorsAnnotationResolver;
 
 @SuppressWarnings( "rawtypes" )
 public class EntityLookup

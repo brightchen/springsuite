@@ -8,6 +8,10 @@ import java.util.Set;
 import my.bc.common.classproperty.ClassProperty;
 import my.bc.common.util.CollectionUtil;
 import my.bc.common.util.ObjectUtil;
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnector;
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnectorAbstractResolver;
+import my.bc.smartdbtool.criteria.relation.connection.IEntityConnectorsResolver;
+import my.bc.smartdbtool.criteria.relation.connection.pa.EntityConnectorsAnnotationResolver;
 
 /*
  * EntityNetwork keeps the relationship among Entities.

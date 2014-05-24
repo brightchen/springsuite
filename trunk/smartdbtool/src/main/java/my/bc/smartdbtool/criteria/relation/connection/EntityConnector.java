@@ -1,4 +1,4 @@
-package my.bc.smartdbtool.criteria.relation;
+package my.bc.smartdbtool.criteria.relation.connection;
 
 import my.bc.common.classproperty.ClassProperty;
 

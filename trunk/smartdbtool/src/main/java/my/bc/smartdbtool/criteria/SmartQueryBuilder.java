@@ -7,9 +7,9 @@ import java.util.Set;
 import my.bc.common.classproperty.ClassProperty;
 import my.bc.common.util.EntityUtil;
 import my.bc.common.util.StringUtil;
-import my.bc.smartdbtool.criteria.relation.EntityConnector;
 import my.bc.smartdbtool.criteria.relation.EntityNetwork;
 import my.bc.smartdbtool.criteria.relation.EntityNetworkManager;
+import my.bc.smartdbtool.criteria.relation.connection.EntityConnector;
 
 /*
  * this class provides service to build query according to the QueryCriteria
