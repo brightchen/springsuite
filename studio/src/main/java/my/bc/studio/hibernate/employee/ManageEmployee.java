@@ -14,6 +14,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.mapping.Column;
 import org.hibernate.mapping.ForeignKey;
+import org.hibernate.mapping.Join;
 import org.hibernate.mapping.MetaAttribute;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
@@ -40,9 +41,9 @@ public class ManageEmployee
       throw new ExceptionInInitializerError( ex );
     }
     ManageEmployee me = new ManageEmployee();
-    me.showClassMappings( configuration );
-    
-    me.showTableMappings( configuration );
+    me.showJoins( configuration );
+//    me.showClassMappings( configuration );
+//    me.showTableMappings( configuration );
     
     // /* Add few employee records in database */
     // Integer empID1 = me.addEmployee( "Zara", "Ali", 1000 );
@@ -120,9 +121,35 @@ public class ManageEmployee
         {
           colNames.append( col.getName() ).append( ", " );
         }
-        outputInfo( colNames + " referenced to table " + referencedTable.getName() );
+        outputInfo( colNames + " of table " + table.getName() + " referenced to table " + referencedTable.getName() );
       }
     }
+  }
+  
+  public void showJoins( Configuration configuration )
+  {
+    for ( Iterator<PersistentClass> classIter = configuration.getClassMappings(); classIter.hasNext(); )
+    {
+      PersistentClass persistentClass = classIter.next();
+      for( Iterator<Join> joinIter = persistentClass.getJoinIterator(); joinIter.hasNext(); )
+      {
+        Join join = joinIter.next();
+        outputInfo( "=========new join===========" );
+        for( Iterator<Property> propertyIter = join.getPropertyIterator(); propertyIter.hasNext(); )
+        {
+          outputProperty( propertyIter.next() );
+        }
+      }
+    }
+  }
+  
+  public void outputProperty( Property property )
+  {
+    PersistentClass persistentClass = property.getPersistentClass();
+    String className = persistentClass.getClassName();
+    String propertyName = property.getName();
+    outputInfo( "className="+className + "; propertyName="+propertyName );
+    
   }
   
   public void outputInfo( String info )
