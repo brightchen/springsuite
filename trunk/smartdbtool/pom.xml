@@ -5,7 +5,9 @@
     <artifactId>springsuite</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+  
   <artifactId>smartdbtool</artifactId>
+  <name>smartdbtool</name>
   <description>a smart db tools which can do query and update</description>
 
 

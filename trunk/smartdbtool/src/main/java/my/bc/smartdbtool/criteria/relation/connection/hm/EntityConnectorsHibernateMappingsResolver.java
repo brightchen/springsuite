@@ -25,6 +25,9 @@ import my.bc.smartdbtool.criteria.relation.connection.pa.EntityConnectorsAnnotat
 /**
  * this class try to resolve the relationship among entities via hibernate internal mappings
  * Hibernate should already built the relationship among entities if the application use hibernate to manage the entities.
+ * 
+ * The ManyToMany relationship was implemented by adding a implicit relationship table, 
+ * this relationship don't have corresponding persistent class. 
  *  
  * @author brightchen
  *
