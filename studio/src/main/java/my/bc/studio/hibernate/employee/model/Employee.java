@@ -29,7 +29,7 @@ public class Employee
   @JoinTable(name="employee_role", 
               joinColumns={@JoinColumn(name="employee_id", referencedColumnName="id")}, 
               inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
-  private Set<EmployeeRole> employeeRoles;
+  private Set<Role1> roles;
 
   @ManyToOne
   @JoinColumn(name="deparment_id", nullable=true, updatable=true)
@@ -85,4 +85,15 @@ public class Employee
   {
     this.salary = salary;
   }
+
+  public Set< Role1 > getRoles()
+  {
+    return roles;
+  }
+  public void setRoles( Set< Role1 > roles )
+  {
+    this.roles = roles;
+  }
+  
+  
 }

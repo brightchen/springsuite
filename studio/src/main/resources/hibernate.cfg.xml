@@ -22,9 +22,13 @@
     <property name="hbm2ddl.auto">update</property>
     
     <!-- <mapping package="my.bc.studio.hibernate.employee.model" /> -->
+    <!-- 
     <mapping class="my.bc.studio.hibernate.employee.model.Employee" />
-    <mapping class="my.bc.studio.hibernate.employee.model.EmployeeRole" />
+    <mapping class="my.bc.studio.hibernate.employee.model.Role1" />
     <mapping class="my.bc.studio.hibernate.employee.model.Department" />
-
+    -->
+  <mapping class="my.bc.studio.model.User" />
+  <mapping class="my.bc.studio.model.Role" />
+ 
   </session-factory>
 </hibernate-configuration>

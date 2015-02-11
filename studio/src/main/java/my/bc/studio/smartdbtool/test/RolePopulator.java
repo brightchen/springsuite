@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import my.bc.studio.model.Role;
+import my.bc.studio.model.RoleEnum;
 import my.bc.studio.smartdbtool.service.IUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class RolePopulator
 {
-  public static enum RoleEnum
-  {
-    Guest,
-    User,
-    Admin
-  }
   
   @Autowired( required = true )
   private IUserService userService;
