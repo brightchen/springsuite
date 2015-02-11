@@ -4,10 +4,12 @@ import java.util.List;
 
 
 
+
 import my.bc.common.classproperty.ClassProperty;
 import my.bc.smartdbtool.criteria.Operator;
 import my.bc.smartdbtool.criteria.QueryCriteria;
 import my.bc.studio.model.Role;
+import my.bc.studio.model.RoleEnum;
 import my.bc.studio.model.User;
 import my.bc.studio.smartdbtool.service.IUserService;
 
@@ -51,7 +53,7 @@ public class TestCaseJoin
         user.setLastName( "lastname" );
         user.setName( "guest" );
         user.setEmail( "guest@company.com" );
-        user.addRole( RolePopulator.toRole( RolePopulator.RoleEnum.Guest ) );
+        user.addRole( RolePopulator.toRole( RoleEnum.Guest ) );
         
         userService.saveEntity( user );
       }
@@ -62,7 +64,7 @@ public class TestCaseJoin
         user.setLastName( "lastname" );
         user.setName( "user" );
         user.setEmail( "user@company.com" );
-        user.addRole( RolePopulator.toRole( RolePopulator.RoleEnum.User ) );
+        user.addRole( RolePopulator.toRole( RoleEnum.User ) );
         
         userService.saveEntity( user );
       }
@@ -73,7 +75,7 @@ public class TestCaseJoin
         user.setLastName( "lastname" );
         user.setName( "admin" );
         user.setEmail( "admin@company.com" );
-        user.addRole( RolePopulator.toRole( RolePopulator.RoleEnum.Admin ) );
+        user.addRole( RolePopulator.toRole( RoleEnum.Admin ) );
         
         userService.saveEntity( user );
       }
